@@ -1,246 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Nihar Mehta - Portfolio</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-        
-        /* Custom Styles */
-        .gradient-bg {
-            background: linear-gradient(45deg, #1a1a2e, #16213e);
-        }
-        
-        .skill-bar {
-            height: 25px;
-            background: #f1f1f1;
-            border-radius: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .skill-percentage {
-            height: 100%;
-            background: #2196F3;
-            border-radius: 15px;
-            color: white;
-            display: flex;
-            align-items: center;
-            padding-left: 10px;
-            transition: width 1s ease-in-out;
-        }
-        
-        .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        
-        .social-icons a {
-            color: #fff;
-            margin: 0 10px;
-            font-size: 24px;
-            transition: color 0.3s ease;
-        }
-        
-        .social-icons a:hover {
-            color: #2196F3;
-        }
-        
-        .w3-sidebar {
-            width: 120px;
-            background: #16213e;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-        }
-        
-        #main {
-            margin-left: 120px;
-            background: #1a1a2e;
-        }
-        
-        @media only screen and (max-width: 600px) {
-            #main {margin-left: 0}
-            .w3-sidebar {display: none}
-        }
-        
-        .certificate-list li {
-            margin-bottom: 10px;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 5px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nihar Mehta - Cybersecurity Specialist</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="w3-black">
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-blue-900 text-white p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">Nihar Mehta</h1>
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="hover:text-blue-300">About</a>
+                <a href="#experience" class="hover:text-blue-300">Experience</a>
+                <a href="#projects" class="hover:text-blue-300">Projects</a>
+                <a href="#skills" class="hover:text-blue-300">Skills</a>
+                <a href="#contact" class="hover:text-blue-300">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-<!-- Sidebar -->
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
-    <img src="WhatsApp Image 2023-08-07 at 14.51.51.jpeg" style="width:100%" class="w3-round">
-    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-blue">
-        <i class="fa fa-home w3-xxlarge"></i>
-        <p>HOME</p>
-    </a>
-    <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-blue">
-        <i class="fa fa-user w3-xxlarge"></i>
-        <p>ABOUT</p>
-    </a>
-    <a href="#skills" class="w3-bar-item w3-button w3-padding-large w3-hover-blue">
-        <i class="fa fa-code w3-xxlarge"></i>
-        <p>SKILLS</p>
-    </a>
-    <a href="#experience" class="w3-bar-item w3-button w3-padding-large w3-hover-blue">
-        <i class="fa fa-briefcase w3-xxlarge"></i>
-        <p>EXPERIENCE</p>
-    </a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-blue">
-        <i class="fa fa-envelope w3-xxlarge"></i>
-        <p>CONTACT</p>
-    </a>
-</nav>
-
-<!-- Page Content -->
-<div class="w3-padding-large gradient-bg" id="main">
-    <!-- Header -->
-    <header class="w3-container w3-padding-32 w3-center" id="home">
-        <h1 class="w3-jumbo">Nihar Mehta</h1>
-        <p class="w3-large">Cybersecurity Specialist & Digital Forensics Expert</p>
-        <img src="WhatsApp Image 2023-08-07 at 14.51.51.jpeg" alt="Nihar" class="w3-image w3-round" width="500">
+    <!-- Hero Section -->
+    <header class="bg-blue-800 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <img src="/api/placeholder/150/150" alt="Nihar Mehta" class="rounded-full mx-auto mb-6 border-4 border-white">
+            <h1 class="text-4xl font-bold mb-4">Nihar Mehta</h1>
+            <p class="text-xl mb-6">Cybersecurity Specialist | Digital Forensics Expert</p>
+            <div class="flex justify-center space-x-4">
+                <a href="https://linkedin.com/in/nihar-mehta-2473339227" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full">
+                    <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                </a>
+                <a href="https://github.com/Nihar2520" class="bg-gray-700 hover:bg-gray-800 px-6 py-2 rounded-full">
+                    <i class="fab fa-github mr-2"></i>GitHub
+                </a>
+            </div>
+        </div>
     </header>
 
     <!-- About Section -->
-    <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
-        <h2 class="w3-text-light-grey">Professional Summary</h2>
-        <hr style="width:200px" class="w3-opacity">
-        <p>
-            Cybersecurity specialist and M.Sc. candidate with expertise in vulnerability assessment, 
-            penetration testing, and digital forensics. Demonstrated experience in developing secure 
-            applications and conducting security audits. Skilled in both defensive and offensive security 
-            practices, with hands-on experience using industry-standard security tools and frameworks.
-        </p>
-
-        <!-- Skills Section -->
-        <div id="skills" class="w3-padding-64">
-            <h2 class="w3-text-light-grey">Technical Skills</h2>
-            <hr style="width:200px" class="w3-opacity">
-            
-            <div class="skill-bar">
-                <div class="skill-percentage" style="width:85%">Security Tools 85%</div>
-            </div>
-            
-            <div class="skill-bar">
-                <div class="skill-percentage" style="width:80%">Programming 80%</div>
-            </div>
-            
-            <div class="skill-bar">
-                <div class="skill-percentage" style="width:85%">Digital Forensics 85%</div>
-            </div>
-            
-            <div class="skill-bar">
-                <div class="skill-percentage" style="width:75%">Network Analysis 75%</div>
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
+            <div class="max-w-3xl mx-auto">
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    Cybersecurity specialist and M.Sc. candidate with expertise in vulnerability assessment, penetration testing, and digital forensics. 
+                    Demonstrated experience in developing secure applications and conducting security audits. Skilled in both defensive and offensive 
+                    security practices, with hands-on experience using industry-standard security tools and frameworks.
+                </p>
             </div>
         </div>
+    </section>
 
-        <!-- Experience Section -->
-        <div id="experience" class="w3-padding-64">
-            <h2 class="w3-text-light-grey">Professional Experience</h2>
-            <hr style="width:200px" class="w3-opacity">
-            
-            <div class="project-card">
-                <h3>Cyber Security Intern | Prodigy InfoTech</h3>
-                <p class="w3-opacity">June 2023 - July 2023</p>
-                <ul>
-                    <li>Developed Network Packet Analyzer</li>
-                    <li>Implemented image encryption tools</li>
-                    <li>Created secure communication protocols</li>
-                    <li>Conducted vulnerability assessments</li>
-                </ul>
-            </div>
-
-            <div class="project-card">
-                <h3>Digital Forensics Intern | IIMT</h3>
-                <p class="w3-opacity">June 2023 - August 2023</p>
-                <ul>
-                    <li>Performed digital evidence analysis</li>
-                    <li>Assisted in cyber incident response</li>
-                    <li>Prepared detailed forensic reports</li>
-                    <li>Collaborated on complex investigations</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Projects Section -->
-        <div class="w3-padding-64">
-            <h2 class="w3-text-light-grey">Notable Projects</h2>
-            <hr style="width:200px" class="w3-opacity">
-            
-            <div class="project-card">
-                <h3>Fake Social Media Detection System</h3>
-                <p class="w3-opacity">Python, Jupyter Notebook</p>
-                <p>ML-based system to detect fraudulent social media accounts with 85% accuracy</p>
-            </div>
-
-            <div class="project-card">
-                <h3>DineIN - Secure Food Ordering Platform</h3>
-                <p class="w3-opacity">Android, Java, Firebase, ZingQR</p>
-                <p>Secure mobile application for food pre-ordering with encrypted data transmission</p>
-            </div>
-
-            <div class="project-card">
-                <h3>Security Tools Development</h3>
-                <p class="w3-opacity">Python, Cryptography</p>
-                <p>Custom security testing tools including keylogger and image encryption</p>
+    <!-- Experience Section -->
+    <section id="experience" class="bg-white py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Professional Experience</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-12">
+                    <h3 class="text-2xl font-semibold mb-2">Cyber Security Intern</h3>
+                    <p class="text-gray-600 mb-4">Prodigy InfoTech | June 2023 - July 2023</p>
+                    <ul class="list-disc list-inside text-gray-700">
+                        <li>Developed a Network Packet Analyzer</li>
+                        <li>Implemented image encryption tools</li>
+                        <li>Created secure communication protocols</li>
+                        <li>Conducted vulnerability assessments</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-2">Digital Forensics Intern</h3>
+                    <p class="text-gray-600 mb-4">IIMT | June 2023 - August 2023</p>
+                    <ul class="list-disc list-inside text-gray-700">
+                        <li>Performed digital evidence collection and analysis</li>
+                        <li>Assisted in cyber incident response</li>
+                        <li>Documented findings and prepared reports</li>
+                        <li>Collaborated on complex investigations</li>
+                    </ul>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Certifications Section -->
-        <div class="w3-padding-64">
-            <h2 class="w3-text-light-grey">Certifications</h2>
-            <hr style="width:200px" class="w3-opacity">
-            <ul class="certificate-list w3-ul">
-                <li>EC-Council Certified Security Analyst (ECSA)</li>
-                <li>IBM Cybersecurity Fundamentals</li>
-                <li>Cisco Certified Ethical Hacker</li>
-                <li>Security Blue Team Network Analysis Certification</li>
-                <li>Blue Team Digital Forensics Certification</li>
-                <li>CompTIA Security+ Certification</li>
-            </ul>
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Notable Projects</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">Fake Social Media Detection System</h3>
+                    <p class="text-gray-700 mb-4">ML-based system to detect fraudulent social media accounts with 85% accuracy</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Python</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Machine Learning</span>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">DineIN - Secure Food Ordering Platform</h3>
+                    <p class="text-gray-700 mb-4">Secure mobile application for food pre-ordering with encrypted data transmission</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Android</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Firebase</span>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="bg-white py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Technical Skills</h2>
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Security Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Burp Suite</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Wireshark</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Nmap</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">SQLmap</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Programming Languages</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Python</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Java</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Kotlin</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">PHP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Contact Section -->
-    <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
-        <h2 class="w3-text-light-grey">Contact Me</h2>
-        <hr style="width:200px" class="w3-opacity">
-
-        <div class="w3-section">
-            <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Mumbai, India</p>
-            <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: +91 9137800893</p>
-            <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Email: mehtaniharhnd205@gmail.com</p>
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-12">Get In Touch</h2>
+            <div class="flex justify-center space-x-8">
+                <a href="mailto:mehtaniharhnd205@gmail.com" class="flex items-center text-gray-700 hover:text-blue-600">
+                    <i class="fas fa-envelope mr-2"></i>
+                    Email
+                </a>
+                <a href="tel:+919137800893" class="flex items-center text-gray-700 hover:text-blue-600">
+                    <i class="fas fa-phone mr-2"></i>
+                    Phone
+                </a>
+            </div>
         </div>
-
-        <!-- Social Links -->
-        <div class="social-icons w3-section">
-            <a href="https://linkedin.com/in/nihar-mehta-247339227" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/Nihar2520" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://twitter.com/Nihar05490813" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://instagram.com/niharhd2002" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-    </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
-        <p class="w3-medium">© 2024 Nihar Mehta. All rights reserved.</p>
+    <footer class="bg-blue-900 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 Nihar Mehta. All rights reserved.</p>
+        </div>
     </footer>
-</div>
 </body>
 </html>
