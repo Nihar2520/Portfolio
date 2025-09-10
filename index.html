@@ -672,7 +672,7 @@
         .save-btn:hover {
             background: var(--accent-light);
         }
- */
+
         /* Loading and error states */
         .loading {
             text-align: center;
@@ -688,7 +688,7 @@
             border-radius: 8px;
             margin-bottom: 2rem;
         }
-
+ 
         /* Contact info */
         .contact-info {
             display: flex;
@@ -955,9 +955,7 @@
                                 <i class="fas fa-spinner fa-spin"></i>
                                 Loading Credly badges...
                             </div>
-                            <p style="text-align: center; color: var(--text-secondary); padding: 2rem;">
-                                No badges added yet. Use the admin panel (gear icon) to add your Credly badges.
-                            </p>
+                            <!-- Default badges will be populated here -->
                         </div>
                     </div>
                 </div>
@@ -1262,9 +1260,9 @@
             <label for="github-username">GitHub Username</label>
             <input type="text" id="github-username" placeholder="Enter your GitHub username" value="">
         </div>
-        <button onclick="loadGitHubProjects()" class="save-btn">Update Projects</button>
+        <button onclick="loadGitHubProjects()" class="save-btn">Update Projects</button> -->
     </div>
- -->
+
     <script>
         // Global state management
         let portfolioData = {
@@ -1282,6 +1280,7 @@
             loadGitHubProjects();
             loadCredlyBadges();
             populateEditorsWithCurrentContent();
+            initializeDefaultBadges();
         });
 
         // Navigation functions
@@ -1329,6 +1328,39 @@
             profileEditor.value = portfolioData.profile || currentProfile;
             githubUsernameInput.value = portfolioData.githubUsername || '';
             credlyUsernameInput.value = portfolioData.credlyUsername || 'nihar-mehta.18fe0d72';
+        }
+
+        // Initialize with some default badges
+        function initializeDefaultBadges() {
+            if (portfolioData.credlyBadges.length === 0) {
+                portfolioData.credlyBadges = [
+                    {
+                        id: 1,
+                        name: "EC-Council Certified Security Analyst (ECSA)",
+                        issuer: "EC-Council",
+                        image: "https://images.credly.com/size/340x340/images/f4f08795-2ab7-4a5b-8fe8-d1da662334f0/image.png",
+                        url: "https://www.credly.com/badges/your-badge-id",
+                        earned_at: "2024"
+                    },
+                    {
+                        id: 2,
+                        name: "IBM Security Operations Center Analyst",
+                        issuer: "IBM",
+                        image: "https://images.credly.com/size/340x340/images/a8b89c6a-2c09-4b9c-b0d6-b91c9b66c8db/image.png",
+                        url: "https://www.credly.com/badges/your-badge-id",
+                        earned_at: "2024"
+                    },
+                    {
+                        id: 3,
+                        name: "Cisco Certified Ethical Hacker",
+                        issuer: "Cisco",
+                        image: "https://images.credly.com/size/340x340/images/054913b2-e271-49a2-a1a4-9bf1c1f9a404/CyberOps.png",
+                        url: "https://www.credly.com/badges/your-badge-id", 
+                        earned_at: "2024"
+                    }
+                ];
+                renderCredlyBadges();
+            }
         }
 
         function loadStoredData() {
@@ -1451,10 +1483,10 @@
             const credlyBadgesGrid = document.getElementById('credly-badges');
             
             // Clear existing content
-            credlyBadgesGrid.innerHTML = '<div class="loading" id="credly-loading" style="display: none;"><i class="fas fa-spinner fa-spin"></i> Loading Credly badges...</div>';
+            credlyBadgesGrid.innerHTML = '';
             
             if (portfolioData.credlyBadges.length === 0) {
-                credlyBadgesGrid.innerHTML += '<p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No badges added yet. Use the admin panel (gear icon) to add your Credly badges.</p>';
+                credlyBadgesGrid.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 2rem; grid-column: 1 / -1;">No badges added yet. Use the admin panel (gear icon) to add your Credly badges.</p>';
                 return;
             }
 
@@ -1626,6 +1658,7 @@
         }
 
         // Utility functions
+        // Utility functions
         function showNotification(message, type = 'info') {
             // Create notification element
             const notification = document.createElement('div');
@@ -1691,7 +1724,3 @@
     </script>
 </body>
 </html>
-
-
-
-
