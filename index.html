@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nihar Mehta - Cybersecurity Professional</title>
+    <title>Nihar Mehta - Ethical Hacker</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -13,15 +13,16 @@
         }
 
         :root {
-            --primary: #0f172a;
-            --secondary: #1e293b;
-            --accent: #3b82f6;
-            --accent-hover: #2563eb;
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --card-bg: rgba(30, 41, 59, 0.8);
-            --border: rgba(148, 163, 184, 0.1);
+            --primary: #ffffff;
+            --secondary: #f8f9fa;
+            --dark: #212529;
+            --accent: #000000;
+            --accent-light: #343a40;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --border: #dee2e6;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
         body {
@@ -32,36 +33,17 @@
             overflow-x: hidden;
         }
 
-        /* Animated background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
-            z-index: -1;
-            animation: gradientShift 10s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-
         /* Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(15, 23, 42, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 2px solid var(--border);
+            box-shadow: var(--shadow);
         }
 
         .nav-container {
@@ -74,12 +56,10 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent);
+            letter-spacing: -1px;
         }
 
         .nav-links {
@@ -91,30 +71,17 @@
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+            font-weight: 600;
+            transition: all 0.3s;
             position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
         }
 
         .nav-links a:hover,
         .nav-links a.active {
             color: var(--accent);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
+            background: var(--secondary);
         }
 
         /* Mobile menu */
@@ -127,7 +94,7 @@
         .mobile-menu span {
             width: 25px;
             height: 3px;
-            background: var(--text-primary);
+            background: var(--accent);
             margin: 3px 0;
             transition: 0.3s;
         }
@@ -140,7 +107,7 @@
 
         .page-section {
             display: none;
-            padding: 2rem 0;
+            padding: 4rem 0;
             min-height: calc(100vh - 80px);
         }
 
@@ -162,60 +129,62 @@
             min-height: calc(100vh - 80px);
             text-align: center;
             position: relative;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
+            font-size: 4.5rem;
+            font-weight: 900;
             margin-bottom: 1rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--accent);
             animation: fadeInUp 1s ease-out;
+            letter-spacing: -3px;
         }
 
         .hero-content .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
             animation: fadeInUp 1s ease-out 0.2s both;
+            font-weight: 500;
         }
 
         .hero-content .description {
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto 3rem auto;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.8;
             animation: fadeInUp 1s ease-out 0.4s both;
+            color: var(--text-secondary);
         }
 
         .cta-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
             animation: fadeInUp 1s ease-out 0.6s both;
         }
 
         .btn {
-            padding: 0.875rem 2rem;
+            padding: 1rem 2.5rem;
             background: var(--accent);
             color: white;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s;
             border: 2px solid var(--accent);
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            font-size: 1rem;
         }
 
         .btn:hover {
-            background: var(--accent-hover);
+            background: var(--accent-light);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+            box-shadow: var(--shadow-hover);
         }
 
         .btn-outline {
@@ -231,58 +200,76 @@
 
         /* Card styles */
         .card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid var(--border);
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: var(--primary);
+            border-radius: 15px;
+            padding: 2.5rem;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent);
         }
 
         /* About section */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 2fr;
-            gap: 3rem;
+            gap: 4rem;
             align-items: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .profile-card {
             text-align: center;
+            background: var(--accent);
+            color: white;
+            border: 2px solid var(--accent);
         }
 
         .profile-image {
-            width: 200px;
-            height: 200px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            background: var(--gradient);
+            background: rgba(255, 255, 255, 0.2);
             margin: 0 auto 1.5rem auto;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 4rem;
             color: white;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .profile-card h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .profile-card .text-secondary {
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 4rem;
         }
 
         .skill-category h3 {
             color: var(--accent);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
         }
 
         .skill-list {
@@ -290,24 +277,38 @@
         }
 
         .skill-list li {
-            padding: 0.5rem 0;
+            padding: 1rem 0;
             border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: all 0.3s;
+        }
+
+        .skill-list li:hover {
+            background: var(--secondary);
+            margin: 0 -1rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            border-radius: 8px;
         }
 
         /* Projects section */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
         .project-card {
             position: relative;
             overflow: hidden;
+            border: 2px solid var(--border);
+        }
+
+        .project-card:hover {
+            border-color: var(--accent);
         }
 
         .project-header {
@@ -318,8 +319,8 @@
         }
 
         .project-title {
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--accent);
             margin-bottom: 0.5rem;
         }
@@ -334,14 +335,15 @@
         .language-tag {
             background: var(--accent);
             color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
         }
 
         .project-stats {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             margin-top: 1rem;
             font-size: 0.9rem;
             color: var(--text-secondary);
@@ -350,76 +352,175 @@
         .project-links {
             display: flex;
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
         .project-links a {
             color: var(--accent);
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             transition: color 0.3s;
         }
 
         .project-links a:hover {
-            color: var(--accent-hover);
+            color: var(--accent-light);
         }
 
-        /* Certificates section */
-        .certificates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .certificate-card {
+        /* Section titles */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 3rem;
+            color: var(--accent);
             text-align: center;
             position: relative;
         }
 
-        .certificate-icon {
-            font-size: 3rem;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        /* Subsection styles */
+        .subsection {
+            margin-bottom: 4rem;
+        }
+
+        .subsection-title {
+            font-size: 1.75rem;
+            font-weight: 700;
             color: var(--accent);
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        /* Credly section */
+        .credly-section {
+            background: var(--secondary);
+            border-radius: 15px;
+            padding: 3rem;
+            border: 2px solid var(--border);
+            margin-bottom: 3rem;
+        }
+
+        .credly-profile-link {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .credly-badges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .credly-badge {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid var(--border);
+            position: relative;
+        }
+
+        .credly-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent);
+        }
+
+        .credly-badge-image {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem auto;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid var(--accent);
+        }
+
+        .credly-badge-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .credly-badge-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .credly-badge-issuer {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .credly-badge-date {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Traditional certificates */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .certificate-card {
+            text-align: center;
+            background: var(--secondary);
+            border: 2px solid var(--border);
+        }
+
+        .certificate-card:hover {
+            border-color: var(--accent);
+        }
+
+        .certificate-icon {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
         }
 
         .certificate-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
         }
 
         .certificate-issuer {
             color: var(--text-secondary);
             margin-bottom: 1rem;
+            font-weight: 500;
+            font-size: 1rem;
         }
 
-        /* Resume section */
+        /* Resume styles */
         .resume-section {
-            margin-bottom: 3rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            flex: 1;
-            height: 2px;
-            background: var(--gradient);
+            margin-bottom: 4rem;
         }
 
         .experience-item, .education-item {
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 2px solid var(--border);
         }
 
         .item-header {
@@ -430,19 +531,21 @@
         }
 
         .item-title {
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-size: 1.4rem;
+            font-weight: 700;
             color: var(--text-primary);
         }
 
         .item-company {
             color: var(--accent);
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
         .item-date {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
         .item-location {
@@ -450,19 +553,16 @@
             font-style: italic;
         }
 
-        .item-description {
-            margin-top: 1rem;
-        }
-
         .item-description ul {
             list-style: none;
             padding-left: 0;
+            margin-top: 1rem;
         }
 
         .item-description li {
-            padding: 0.25rem 0;
+            padding: 0.5rem 0;
             position: relative;
-            padding-left: 1.5rem;
+            padding-left: 2rem;
         }
 
         .item-description li::before {
@@ -470,25 +570,34 @@
             color: var(--accent);
             position: absolute;
             left: 0;
+            font-weight: bold;
         }
 
         /* Admin panel */
 /*         .admin-panel {
             position: fixed;
             top: 0;
-            right: -400px;
-            width: 400px;
+            right: -450px;
+            width: 450px;
             height: 100vh;
-            background: var(--secondary);
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            background: white;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
             z-index: 2000;
             transition: right 0.3s;
             overflow-y: auto;
             padding: 2rem;
+            border-left: 2px solid var(--border);
         }
 
         .admin-panel.open {
             right: 0;
+        }
+
+        .admin-panel h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            font-weight: 900;
         }
 
         .admin-toggle {
@@ -499,17 +608,17 @@
             background: var(--accent);
             color: white;
             border: none;
-            padding: 1rem;
+            padding: 1.2rem;
             border-radius: 50%;
             cursor: pointer;
             z-index: 1500;
-            font-size: 1.2rem;
-            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+            font-size: 1.3rem;
+            box-shadow: var(--shadow-hover);
             transition: all 0.3s;
         }
 
         .admin-toggle:hover {
-            background: var(--accent-hover);
+            background: var(--accent-light);
             transform: translateY(-50%) scale(1.1);
         }
 
@@ -520,24 +629,25 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--text-secondary);
+            font-weight: 600;
+            color: var(--text-primary);
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 0.75rem;
-            background: var(--primary);
-            border: 1px solid var(--border);
+            padding: 0.8rem;
+            background: white;
+            border: 2px solid var(--border);
             border-radius: 8px;
             color: var(--text-primary);
             font-family: inherit;
+            transition: border-color 0.3s;
         }
 
         .form-group textarea {
             resize: vertical;
-            min-height: 100px;
+            min-height: 120px;
         }
 
         .form-group input:focus,
@@ -550,16 +660,17 @@
             background: var(--accent);
             color: white;
             border: none;
-            padding: 0.75rem 1.5rem;
+            padding: 0.8rem 2rem;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
             transition: background 0.3s;
             width: 100%;
+            font-size: 1rem;
         }
 
         .save-btn:hover {
-            background: var(--accent-hover);
+            background: var(--accent-light);
         }
  */
         /* Loading and error states */
@@ -570,12 +681,35 @@
         }
 
         .error {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #fca5a5;
+            background: rgba(220, 53, 69, 0.1);
+            border: 2px solid rgba(220, 53, 69, 0.3);
+            color: #dc3545;
             padding: 1rem;
             border-radius: 8px;
             margin-bottom: 2rem;
+        }
+
+        /* Contact info */
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .contact-item:hover {
+            color: var(--accent);
         }
 
         /* Animations */
@@ -601,16 +735,17 @@
             }
 
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
 
             .hero-content .subtitle {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
 
             .about-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 2rem;
             }
 
             .skills-grid {
@@ -625,6 +760,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .credly-badges-grid {
+                grid-template-columns: 1fr;
+            }
+
             .item-header {
                 flex-direction: column;
                 align-items: flex-start;
@@ -635,10 +774,6 @@
                 right: -100%;
             }
 
-            .admin-toggle {
-                right: 10px;
-            }
-
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -647,36 +782,10 @@
             .container {
                 padding: 0 1rem;
             }
-        }
 
-        /* Additional utility classes */
-        .text-center { text-align: center; }
-        .mb-1 { margin-bottom: 0.5rem; }
-        .mb-2 { margin-bottom: 1rem; }
-        .mb-3 { margin-bottom: 1.5rem; }
-        .mt-2 { margin-top: 1rem; }
-        .mt-3 { margin-top: 1.5rem; }
-
-        /* Contact info styles */
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-item:hover {
-            color: var(--accent);
+            .section-title {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -707,10 +816,14 @@
             <div class="hero">
                 <div class="hero-content">
                     <h1>Nihar Mehta</h1>
-                    <p class="subtitle">Cybersecurity Practioner & Jr.Security Analyst</p>
+                    <p class="subtitle">Ethical Hacker & Security Analyst</p>
                     <p class="description">
-                        Skilled security analyst with expertise in threat detection, incident response, and digital forensics. 
-                        Passionate about protecting digital assets and building robust cybersecurity solutions.
+                        Aspiring Red Team Specialist with hands-on experience in ethical hacking labs and simulated internal network
+                         attacks. Skilled in tools such as Nmap, Wireshark, Burp Suite, and Responder, with practical knowledge of session
+                         hijacking, NTLM hash cracking, and evasion techniques using native Windows utilities. Completed structured red team
+                         scenarios via CEH Engage and personal projects replicating real-world threats across web, network, and endpoint
+                         layers. Well-versed in core cybersecurity concepts and continuously sharpening offensive security skills through labs,
+                         certifications, and collaborative challenges.
                     </p>
                     <div class="cta-buttons">
                         <a href="#" onclick="showSection('projects')" class="btn">
@@ -735,7 +848,10 @@
                             <i class="fab fa-linkedin"></i>
                             LinkedIn
                         </a>
-                    
+                        <span class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Mumbai, India
+                        </span>
                     </div>
                 </div>
             </div>
@@ -779,6 +895,8 @@
                     <div class="card skill-category">
                         <h3><i class="fas fa-cloud"></i> Cloud Security</h3>
                         <ul class="skill-list">
+                            <li>AWS Security <span>⭐⭐⭐⭐</span></li>
+                            <li>GCP Security <span>⭐⭐⭐</span></li>
                             <li>Azure Security <span>⭐⭐⭐</span></li>
                             <li>Kubernetes <span>⭐⭐⭐</span></li>
                         </ul>
@@ -823,49 +941,82 @@
         <!-- Certificates Section -->
         <section id="certificates" class="page-section">
             <div class="container">
-                <h2 class="section-title">Certificates</h2>
-                <div class="certificates-grid" id="certificates-grid">
-                    <div class="card certificate-card">
-                        <div class="certificate-icon">
-                            <i class="fas fa-shield-alt"></i>
+                <h2 class="section-title">Certificates & Achievements</h2>
+                
+                <!-- Credly Badges Section -->
+                <div class="subsection">
+                    <h3 class="subsection-title">
+                        <i class="fas fa-award"></i>
+                        Digital Badges (Credly)
+                    </h3>
+                    <div class="credly-section">
+                        <div class="credly-profile-link">
+                            <a href="#" id="credly-profile-link" target="_blank" class="btn btn-outline" style="display: none;">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Full Credly Profile
+                            </a>
                         </div>
-                        <h3 class="certificate-title">EC-Council Certified Security Analyst</h3>
-                        <p class="certificate-issuer">EC-Council</p>
+                        <div class="credly-badges-grid" id="credly-badges">
+                            <div class="loading" id="credly-loading" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                Loading Credly badges...
+                            </div>
+                            <p style="text-align: center; color: var(--text-secondary); padding: 2rem;">
+                                No badges added yet. Use the admin panel (gear icon) to add your Credly badges.
+                            </p>
+                        </div>
                     </div>
-                    <div class="card certificate-card">
-                        <div class="certificate-icon">
-                            <i class="fas fa-search"></i>
+                </div>
+
+                <!-- Traditional Certificates Section -->
+                <div class="subsection">
+                    <h3 class="subsection-title">
+                        <i class="fas fa-certificate"></i>
+                        Professional Certifications
+                    </h3>
+                    <div class="certificates-grid" id="certificates-grid">
+                        <div class="card certificate-card">
+                            <div class="certificate-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3 class="certificate-title">EC-Council Certified Security Analyst</h3>
+                            <p class="certificate-issuer">EC-Council</p>
                         </div>
-                        <h3 class="certificate-title">Security Operation Center</h3>
-                        <p class="certificate-issuer">IBM</p>
-                    </div>
-                    <div class="card certificate-card">
-                        <div class="certificate-icon">
-                            <i class="fas fa-building"></i>
+                        <div class="card certificate-card">
+                            <div class="certificate-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h3 class="certificate-title">Security Operation Center</h3>
+                            <p class="certificate-issuer">IBM</p>
                         </div>
-                        <h3 class="certificate-title">Cybersecurity Architecture</h3>
-                        <p class="certificate-issuer">IBM</p>
-                    </div>
-                    <div class="card certificate-card">
-                        <div class="certificate-icon">
-                            <i class="fas fa-user-secret"></i>
+                        <div class="card certificate-card">
+                            <div class="certificate-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h3 class="certificate-title">Cybersecurity Architecture</h3>
+                            <p class="certificate-issuer">IBM</p>
                         </div>
-                        <h3 class="certificate-title">Cisco Certified Ethical Hacker</h3>
-                        <p class="certificate-issuer">Cisco</p>
-                    </div>
-                    <div class="card certificate-card">
-                        <div class="certificate-icon">
-                            <i class="fas fa-user-shield"></i>
+                        <div class="card certificate-card">
+                            <div class="certificate-icon">
+                                <i class="fas fa-user-secret"></i>
+                            </div>
+                            <h3 class="certificate-title">Cisco Certified Ethical Hacker</h3>
+                            <p class="certificate-issuer">Cisco</p>
                         </div>
-                        <h3 class="certificate-title">Jr Cybersecurity Analyst</h3>
-                        <p class="certificate-issuer">Cisco</p>
-                    </div>
-                    <div class="card certificate-card">
-                        <div class="certificate-icon">
-                            <i class="fas fa-cog"></i>
+                        <div class="card certificate-card">
+                            <div class="certificate-icon">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <h3 class="certificate-title">Jr Cybersecurity Analyst</h3>
+                            <p class="certificate-issuer">Cisco</p>
                         </div>
-                        <h3 class="certificate-title">CEH v13 (in progress)</h3>
-                        <p class="certificate-issuer">EC-Council</p>
+                        <div class="card certificate-card">
+                            <div class="certificate-icon">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <h3 class="certificate-title">CEH v13 (in progress)</h3>
+                            <p class="certificate-issuer">EC-Council</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -878,7 +1029,10 @@
                 
                 <!-- Profile Section -->
                 <div class="card resume-section">
-                    <h3 class="section-title">Profile</h3>
+                    <h3 class="subsection-title">
+                        <i class="fas fa-user"></i>
+                        Profile
+                    </h3>
                     <p id="resume-profile">
                         Security Analyst with a solid background in cybersecurity operations and network infrastructure. 
                         Skilled in automating threat detection, incident response, and process improvements that enhance 
@@ -890,7 +1044,10 @@
 
                 <!-- Education Section -->
                 <div class="card resume-section">
-                    <h3 class="section-title">Education</h3>
+                    <h3 class="subsection-title">
+                        <i class="fas fa-graduation-cap"></i>
+                        Education
+                    </h3>
                     <div id="education-list">
                         <div class="education-item">
                             <div class="item-header">
@@ -917,7 +1074,10 @@
 
                 <!-- Experience Section -->
                 <div class="card resume-section">
-                    <h3 class="section-title">Experience</h3>
+                    <h3 class="subsection-title">
+                        <i class="fas fa-briefcase"></i>
+                        Experience
+                    </h3>
                     <div id="experience-list">
                         <div class="experience-item">
                             <div class="item-header">
@@ -985,7 +1145,10 @@
 
                 <!-- Key Projects Section -->
                 <div class="card resume-section">
-                    <h3 class="section-title">Key Projects</h3>
+                    <h3 class="subsection-title">
+                        <i class="fas fa-project-diagram"></i>
+                        Key Projects
+                    </h3>
                     <div id="key-projects-list">
                         <div class="experience-item">
                             <div class="item-header">
@@ -1016,7 +1179,10 @@
 
                 <!-- Achievements Section -->
                 <div class="card resume-section">
-                    <h3 class="section-title">Achievements</h3>
+                    <h3 class="subsection-title">
+                        <i class="fas fa-trophy"></i>
+                        Achievements
+                    </h3>
                     <div id="achievements-list">
                         <div class="experience-item">
                             <div class="item-header">
@@ -1044,59 +1210,83 @@
 <!--     <button class="admin-toggle" onclick="toggleAdminPanel()">
         <i class="fas fa-cog"></i>
     </button>
-
+ -->
 <!--     <div class="admin-panel" id="admin-panel">
-        <h3>Content Editor</h3>
+        <h3>Portfolio Editor</h3>
         <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.9rem;">
             Update your portfolio content below. Changes are saved locally in your browser.
         </p>
-
+ -->
         <!-- About Description Editor -->
 <!--         <div class="form-group">
             <label for="about-editor">About Description</label>
             <textarea id="about-editor" placeholder="Enter your about description..."></textarea>
         </div>
-
+ -->
         <!-- Resume Profile Editor -->
 <!--         <div class="form-group">
             <label for="profile-editor">Resume Profile</label>
             <textarea id="profile-editor" placeholder="Enter your resume profile..."></textarea>
-        </div> -->
-
+        </div>
+ -->
+        <!-- Credly Settings -->
+<!--         <div class="form-group" style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid var(--border);">
+            <label for="credly-username">Credly Profile Username</label>
+            <input type="text" id="credly-username" placeholder="Your Credly username">
+            <small style="color: var(--text-secondary); margin-top: 0.5rem; display: block;">
+                Example: if your profile is credly.com/users/john-doe, enter "john-doe"
+            </small>
+        </div>
+ -->
+        <!-- Manual Badge Addition -->
+<!--         <div class="form-group">
+            <label>Add Credly Badge</label>
+            <div style="display: grid; gap: 0.5rem;">
+                <input type="text" id="badge-name" placeholder="Badge Name">
+                <input type="text" id="badge-issuer" placeholder="Issuing Organization">
+                <input type="text" id="badge-image" placeholder="Badge Image URL (optional)">
+                <input type="text" id="badge-url" placeholder="Badge Verification URL (optional)">
+            </div>
+        </div>
+        <button onclick="addCredlyBadge()" class="save-btn" style="margin-bottom: 1rem;">Add Badge</button>
+ -->
         <!-- Certificate Editor -->
 <!--         <div class="form-group">
-            <label for="certificate-name">Add Certificate</label>
-            <input type="text" id="certificate-name" placeholder="Certificate Name">
+            <label>Add Traditional Certificate</label>
+            <div style="display: grid; gap: 0.5rem;">
+                <input type="text" id="certificate-name" placeholder="Certificate Name">
+                <input type="text" id="certificate-issuer" placeholder="Issuing Organization">
+            </div>
         </div>
-        <div class="form-group">
-            <input type="text" id="certificate-issuer" placeholder="Issuing Organization">
-        </div>
-        <button onclick="addCertificate()" class="save-btn" style="margin-bottom: 1rem;">Add Certificate</button>
+        <button onclick="addCertificate()" class="save-btn" style="margin-bottom: 2rem;">Add Certificate</button>
  -->
         <!-- Save Button -->
-<!--         <button onclick="saveContent()" class="save-btn">Save All Changes</button>
-
+<!--         <button onclick="saveContent()" class="save-btn" style="background: #28a745;">Save All Changes</button>
+ -->
         <!-- GitHub Username Input -->
-<!--         <div class="form-group" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+<!--         <div class="form-group" style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid var(--border);">
             <label for="github-username">GitHub Username</label>
-            <input type="text" id="github-username" placeholder="Enter your GitHub username" value="Nihar2520">
+            <input type="text" id="github-username" placeholder="Enter your GitHub username" value="">
         </div>
         <button onclick="loadGitHubProjects()" class="save-btn">Update Projects</button>
-    </div>  -->
-
+    </div>
+ -->
     <script>
         // Global state management
         let portfolioData = {
             about: '',
             profile: '',
             certificates: [],
-            githubUsername: 'Nihar2520'
+            credlyBadges: [],
+            credlyUsername: '',
+            githubUsername: ''
         };
 
         // Initialize the portfolio
         document.addEventListener('DOMContentLoaded', function() {
             loadStoredData();
             loadGitHubProjects();
+            loadCredlyBadges();
             populateEditorsWithCurrentContent();
         });
 
@@ -1135,6 +1325,7 @@
             const aboutEditor = document.getElementById('about-editor');
             const profileEditor = document.getElementById('profile-editor');
             const githubUsernameInput = document.getElementById('github-username');
+            const credlyUsernameInput = document.getElementById('credly-username');
 
             // Get current content from the page
             const currentAbout = document.getElementById('about-description').textContent.trim();
@@ -1142,7 +1333,8 @@
 
             aboutEditor.value = portfolioData.about || currentAbout;
             profileEditor.value = portfolioData.profile || currentProfile;
-            githubUsernameInput.value = portfolioData.githubUsername || 'Nihar2520';
+            githubUsernameInput.value = portfolioData.githubUsername || '';
+            credlyUsernameInput.value = portfolioData.credlyUsername || '';
         }
 
         function loadStoredData() {
@@ -1161,6 +1353,9 @@
                     if (portfolioData.certificates && portfolioData.certificates.length > 0) {
                         renderCertificates();
                     }
+                    if (portfolioData.credlyBadges && portfolioData.credlyBadges.length > 0) {
+                        renderCredlyBadges();
+                    }
                 } catch (e) {
                     console.error('Error loading stored data:', e);
                 }
@@ -1171,15 +1366,20 @@
             const aboutEditor = document.getElementById('about-editor');
             const profileEditor = document.getElementById('profile-editor');
             const githubUsernameInput = document.getElementById('github-username');
+            const credlyUsernameInput = document.getElementById('credly-username');
 
             // Update portfolio data
             portfolioData.about = aboutEditor.value;
             portfolioData.profile = profileEditor.value;
             portfolioData.githubUsername = githubUsernameInput.value;
+            portfolioData.credlyUsername = credlyUsernameInput.value;
 
             // Update page content
             document.getElementById('about-description').textContent = portfolioData.about;
             document.getElementById('resume-profile').textContent = portfolioData.profile;
+
+            // Update Credly profile link
+            updateCredlyProfileLink();
 
             // Save to localStorage
             localStorage.setItem('portfolioData', JSON.stringify(portfolioData));
@@ -1188,6 +1388,103 @@
             showNotification('Content saved successfully!', 'success');
         }
 
+        // Credly Integration Functions
+        function updateCredlyProfileLink() {
+            const profileLink = document.getElementById('credly-profile-link');
+            if (portfolioData.credlyUsername) {
+                const credlyUrl = portfolioData.credlyUsername.startsWith('http') 
+                    ? portfolioData.credlyUsername 
+                    : `https://www.credly.com/users/${portfolioData.credlyUsername}`;
+                profileLink.href = credlyUrl;
+                profileLink.style.display = 'inline-flex';
+            } else {
+                profileLink.style.display = 'none';
+            }
+        }
+
+        async function loadCredlyBadges() {
+            renderCredlyBadges();
+            updateCredlyProfileLink();
+        }
+
+        function addCredlyBadge() {
+            const nameInput = document.getElementById('badge-name');
+            const issuerInput = document.getElementById('badge-issuer');
+            const imageInput = document.getElementById('badge-image');
+            const urlInput = document.getElementById('badge-url');
+
+            const name = nameInput.value.trim();
+            const issuer = issuerInput.value.trim();
+            const image = imageInput.value.trim();
+            const url = urlInput.value.trim();
+
+            if (name && issuer) {
+                const newBadge = {
+                    id: Date.now(),
+                    name: name,
+                    issuer: issuer,
+                    image: image || 'https://via.placeholder.com/100x100/000000/ffffff?text=Badge',
+                    url: url,
+                    earned_at: new Date().toLocaleDateString()
+                };
+
+                portfolioData.credlyBadges.push(newBadge);
+                renderCredlyBadges();
+
+                // Clear inputs
+                nameInput.value = '';
+                issuerInput.value = '';
+                imageInput.value = '';
+                urlInput.value = '';
+
+                // Save to localStorage
+                localStorage.setItem('portfolioData', JSON.stringify(portfolioData));
+
+                showNotification('Badge added successfully!', 'success');
+            } else {
+                showNotification('Please fill in at least badge name and issuer.', 'error');
+            }
+        }
+
+        function removeCredlyBadge(id) {
+            portfolioData.credlyBadges = portfolioData.credlyBadges.filter(badge => badge.id !== id);
+            renderCredlyBadges();
+            localStorage.setItem('portfolioData', JSON.stringify(portfolioData));
+            showNotification('Badge removed successfully!', 'success');
+        }
+
+        function renderCredlyBadges() {
+            const credlyBadgesGrid = document.getElementById('credly-badges');
+            
+            // Clear existing content
+            credlyBadgesGrid.innerHTML = '<div class="loading" id="credly-loading" style="display: none;"><i class="fas fa-spinner fa-spin"></i> Loading Credly badges...</div>';
+            
+            if (portfolioData.credlyBadges.length === 0) {
+                credlyBadgesGrid.innerHTML += '<p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No badges added yet. Use the admin panel (gear icon) to add your Credly badges.</p>';
+                return;
+            }
+
+            // Add badges
+            portfolioData.credlyBadges.forEach(badge => {
+                const badgeElement = document.createElement('div');
+                badgeElement.className = 'credly-badge';
+                badgeElement.innerHTML = `
+                    <div class="credly-badge-image">
+                        <img src="${badge.image}" alt="${badge.name}" onerror="this.src='https://via.placeholder.com/100x100/000000/ffffff?text=Badge'">
+                    </div>
+                    <h4 class="credly-badge-title">${badge.name}</h4>
+                    <p class="credly-badge-issuer">${badge.issuer}</p>
+                    <p class="credly-badge-date">Earned: ${badge.earned_at}</p>
+                    ${badge.url ? `<a href="${badge.url}" target="_blank" style="position: absolute; top: 10px; right: 10px; color: var(--accent); font-size: 1.2rem;"><i class="fas fa-external-link-alt"></i></a>` : ''}
+                    <button onclick="removeCredlyBadge(${badge.id})" style="background: #dc3545; color: white; border: none; padding: 0.3rem 0.6rem; border-radius: 4px; cursor: pointer; margin-top: 0.5rem; font-size: 0.8rem;">
+                        Remove
+                    </button>
+                `;
+                credlyBadgesGrid.appendChild(badgeElement);
+            });
+        }
+
+        // Certificate functions
         function addCertificate() {
             const nameInput = document.getElementById('certificate-name');
             const issuerInput = document.getElementById('certificate-issuer');
@@ -1228,9 +1525,6 @@
         function renderCertificates() {
             const certificatesGrid = document.getElementById('certificates-grid');
             
-            // Clear existing custom certificates, keep default ones
-            const defaultCertificates = certificatesGrid.innerHTML;
-            
             // Add custom certificates
             portfolioData.certificates.forEach(cert => {
                 const certificateCard = document.createElement('div');
@@ -1241,7 +1535,7 @@
                     </div>
                     <h3 class="certificate-title">${cert.name}</h3>
                     <p class="certificate-issuer">${cert.issuer}</p>
-                    <button onclick="removeCertificate(${cert.id})" style="background: #ef4444; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; margin-top: 1rem;">
+                    <button onclick="removeCertificate(${cert.id})" style="background: #dc3545; color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; margin-top: 1rem;">
                         Remove
                     </button>
                 `;
@@ -1271,15 +1565,21 @@
                 loading.style.display = 'none';
 
                 if (repos.length === 0) {
-                    projectsGrid.innerHTML = '<p class="text-center">No public repositories found.</p>';
+                    projectsGrid.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 3rem;">No public repositories found for this username.</p>';
                     return;
                 }
 
-                repos.forEach(repo => {
-                    if (!repo.fork) { // Only show original repos, not forks
-                        const projectCard = createProjectCard(repo);
-                        projectsGrid.appendChild(projectCard);
-                    }
+                // Filter out forked repositories and show only original projects
+                const originalRepos = repos.filter(repo => !repo.fork);
+                
+                if (originalRepos.length === 0) {
+                    projectsGrid.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 3rem;">No original repositories found. Only forks are available.</p>';
+                    return;
+                }
+
+                originalRepos.forEach(repo => {
+                    const projectCard = createProjectCard(repo);
+                    projectsGrid.appendChild(projectCard);
                 });
 
             } catch (error) {
@@ -1287,8 +1587,13 @@
                 errorDiv.style.display = 'block';
                 errorDiv.innerHTML = `
                     <strong>Error loading projects:</strong> ${error.message}<br>
-                    <small>Make sure the GitHub username is correct and the profile is public.</small>
+                    <small>Please check:<br>
+                    • GitHub username is correct: "${username}"<br>
+                    • Profile is public<br>
+                    • You have public repositories<br>
+                    • Internet connection is working</small>
                 `;
+                console.error('GitHub API Error:', error);
             }
         }
 
@@ -1304,7 +1609,7 @@
                 <div class="project-header">
                     <div>
                         <h3 class="project-title">${repo.name}</h3>
-                        <p class="text-secondary">${description}</p>
+                        <p style="color: var(--text-secondary);">${description}</p>
                     </div>
                 </div>
                 <div class="project-languages">
@@ -1337,19 +1642,20 @@
                 padding: 1rem 1.5rem;
                 border-radius: 8px;
                 color: white;
-                font-weight: 500;
+                font-weight: 600;
                 z-index: 9999;
                 opacity: 0;
                 transform: translateX(100%);
                 transition: all 0.3s ease;
-                max-width: 300px;
+                max-width: 350px;
+                box-shadow: var(--shadow-hover);
             `;
 
             // Set background color based on type
             const colors = {
-                success: '#10b981',
-                error: '#ef4444',
-                info: '#3b82f6'
+                success: '#28a745',
+                error: '#dc3545',
+                info: '#007bff'
             };
             notification.style.background = colors[type] || colors.info;
             notification.textContent = message;
@@ -1362,39 +1668,25 @@
                 notification.style.transform = 'translateX(0)';
             }, 100);
 
-            // Hide notification after 3 seconds
+            // Hide notification after 4 seconds
             setTimeout(() => {
                 notification.style.opacity = '0';
                 notification.style.transform = 'translateX(100%)';
                 setTimeout(() => {
                     document.body.removeChild(notification);
                 }, 300);
-            }, 3000);
+            }, 4000);
         }
 
-        // Smooth scrolling for internal links
-        document.addEventListener('click', function(e) {
-            if (e.target.matches('a[href^="#"]')) {
-                e.preventDefault();
-                const target = document.querySelector(e.target.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            }
-        });
-
         // Close admin panel when clicking outside
-        document.addEventListener('click', function(e) {
-            const panel = document.getElementById('admin-panel');
-            const toggle = document.querySelector('.admin-toggle');
+        // document.addEventListener('click', function(e) {
+        //     const panel = document.getElementById('admin-panel');
+        //     const toggle = document.querySelector('.admin-toggle');
             
-            if (!panel.contains(e.target) && !toggle.contains(e.target)) {
-                panel.classList.remove('open');
-            }
-        });
+        //     if (!panel.contains(e.target) && !toggle.contains(e.target)) {
+        //         panel.classList.remove('open');
+        //     }
+        // });
 
         // Keyboard navigation
         document.addEventListener('keydown', function(e) {
@@ -1402,25 +1694,6 @@
                 document.getElementById('admin-panel').classList.remove('open');
             }
         });
-
-        // Performance: Lazy load projects when section becomes visible
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.target.id === 'projects') {
-                    loadGitHubProjects();
-                }
-            });
-        });
-
-        observer.observe(document.getElementById('projects'));
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
