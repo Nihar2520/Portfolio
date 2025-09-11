@@ -574,7 +574,7 @@
         }
 
         /* Admin panel */
-        .admin-panel {
+/*         .admin-panel {
             position: fixed;
             top: 0;
             right: -450px;
@@ -671,7 +671,7 @@
 
         .save-btn:hover {
             background: var(--accent-light);
-        }
+        } */
 
         /* Loading and error states */
         .loading {
@@ -1193,7 +1193,7 @@
     </main>
 
     <!-- Admin Panel -->
-    <button class="admin-toggle" onclick="toggleAdminPanel()">
+<!--     <button class="admin-toggle" onclick="toggleAdminPanel()">
         <i class="fas fa-cog"></i>
     </button>
 
@@ -1202,30 +1202,30 @@
         <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.9rem;">
             Update your portfolio content below. Changes are saved locally in your browser.
         </p>
-
+ -->
         <!-- About Description Editor -->
-        <div class="form-group">
+<!--         <div class="form-group">
             <label for="about-editor">About Description</label>
             <textarea id="about-editor" placeholder="Enter your about description..."></textarea>
         </div>
-
+ -->
         <!-- Resume Profile Editor -->
-        <div class="form-group">
+<!--         <div class="form-group">
             <label for="profile-editor">Resume Profile</label>
             <textarea id="profile-editor" placeholder="Enter your resume profile..."></textarea>
         </div>
-
+ -->
         <!-- Credly Settings -->
-        <div class="form-group" style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid var(--border);">
+<!--         <div class="form-group" style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid var(--border);">
             <label for="credly-username">Credly Profile Username</label>
             <input type="text" id="credly-username" placeholder="Your Credly username">
             <small style="color: var(--text-secondary); margin-top: 0.5rem; display: block;">
                 Example: if your profile is credly.com/users/john-doe, enter "john-doe"
             </small>
         </div>
-
+ -->
         <!-- Manual Badge Addition -->
-        <div class="form-group">
+<!--         <div class="form-group">
             <label>Add Credly Badge</label>
             <div style="display: grid; gap: 0.5rem;">
                 <input type="text" id="badge-name" placeholder="Badge Name">
@@ -1235,9 +1235,9 @@
             </div>
         </div>
         <button onclick="addCredlyBadge()" class="save-btn" style="margin-bottom: 1rem;">Add Badge</button>
-
+ -->
         <!-- Certificate Editor -->
-        <div class="form-group">
+<!--         <div class="form-group">
             <label>Add Traditional Certificate</label>
             <div style="display: grid; gap: 0.5rem;">
                 <input type="text" id="certificate-name" placeholder="Certificate Name">
@@ -1245,18 +1245,18 @@
             </div>
         </div>
         <button onclick="addCertificate()" class="save-btn" style="margin-bottom: 2rem;">Add Certificate</button>
-
+ -->
         <!-- Save Button -->
-        <button onclick="saveContent()" class="save-btn" style="background: #28a745;">Save All Changes</button>
-
+<!--         <button onclick="saveContent()" class="save-btn" style="background: #28a745;">Save All Changes</button>
+ -->
         <!-- GitHub Username Input -->
-        <div class="form-group" style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid var(--border);">
+<!--         <div class="form-group" style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid var(--border);">
             <label for="github-username">GitHub Username</label>
             <input type="text" id="github-username" placeholder="Enter your GitHub username" value="">
         </div>
         <button onclick="loadGitHubProjects()" class="save-btn">Update Projects</button>
     </div>
-
+ -->
     <script>
         // Global state management
         let portfolioData = {
@@ -1736,6 +1736,7 @@
     </script>
 </body>
 </html>
+
 
 
 
