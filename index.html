@@ -1006,68 +1006,16 @@
         </section>
     </div>
 
-    <!-- Admin Panel -->
-    <button class="admin-toggle" onclick="toggleAdminPanel()">
-        <i class="fas fa-cog"></i>
+    <!-- Admin Panel - Password Protected -->
+    <button class="admin-toggle" onclick="toggleAdminPanel()" title="Admin Access (Password Protected)">
+        <i class="fas fa-lock"></i>
     </button>
 
     <div class="admin-panel" id="adminPanel">
-        <h2 style="margin-bottom: 1rem;">Admin Dashboard</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Manage your portfolio settings and messages</p>
-
-        <!-- GitHub Configuration for Messages -->
-        <div style="background: var(--secondary); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
-            <h3 style="margin-bottom: 1rem; font-size: 1.2rem;">
-                <i class="fas fa-cog"></i> GitHub Repository Settings
-            </h3>
-            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
-                Configure GitHub to store messages in your repository
-            </p>
-            
-            <div style="margin-bottom: 1rem;">
-                <label style="font-weight: 600; display: block; margin-bottom: 0.5rem;">Repository Owner</label>
-                <input type="text" id="repoOwner" placeholder="your-github-username" 
-                       style="width: 100%; padding: 0.75rem; border: 2px solid var(--border); border-radius: 8px;">
-            </div>
-
-            <div style="margin-bottom: 1rem;">
-                <label style="font-weight: 600; display: block; margin-bottom: 0.5rem;">Repository Name</label>
-                <input type="text" id="repoName" placeholder="your-repo-name.github.io" 
-                       style="width: 100%; padding: 0.75rem; border: 2px solid var(--border); border-radius: 8px;">
-            </div>
-
-            <div style="margin-bottom: 1rem;">
-                <label style="font-weight: 600; display: block; margin-bottom: 0.5rem;">
-                    GitHub Personal Access Token 
-                    <a href="https://github.com/settings/tokens" target="_blank" style="font-size: 0.8rem; color: var(--accent);">
-                        (Create Token)
-                    </a>
-                </label>
-                <input type="password" id="githubToken" placeholder="ghp_xxxxxxxxxxxx" 
-                       style="width: 100%; padding: 0.75rem; border: 2px solid var(--border); border-radius: 8px;">
-                <small style="color: var(--text-secondary); display: block; margin-top: 0.5rem; line-height: 1.4;">
-                    Required permissions: <strong>repo</strong> (Full control of repositories)<br>
-                    Token is stored locally in your browser only.
-                </small>
-            </div>
-
-            <button onclick="saveGitHubConfig()" class="submit-btn" style="width: 100%;">
-                Save Configuration
-            </button>
-        </div>
-
-        <!-- GitHub Username for Projects -->
-        <div style="margin-bottom: 2rem;">
-            <label style="font-weight: 600; display: block; margin-bottom: 0.5rem;">GitHub Username (for Projects)</label>
-            <input type="text" id="githubUsername" placeholder="Your GitHub username" 
-                   value="nihar-mehta-247339227"
-                   style="width: 100%; padding: 0.75rem; border: 2px solid var(--border); border-radius: 8px;">
-            <button onclick="loadGitHubProjects()" class="submit-btn" style="margin-top: 1rem; width: 100%;">
-                Update Projects
-            </button>
-        </div>
-
-        <hr style="margin: 2rem 0; border: none; border-top: 2px solid var(--border);">
+        <h2 style="margin-bottom: 1rem;">
+            <i class="fas fa-shield-alt"></i> Admin Dashboard
+        </h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">View and manage contact messages</p>
 
         <!-- Messages Section -->
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
@@ -1085,18 +1033,19 @@
     <div class="notification" id="notification"></div>
 
     <script>
-        // Portfolio Data
-        let portfolioData = {
-            githubUsername: 'nihar-mehta-247339227',
-            messages: []
+        // Portfolio Data - HARDCODED CONFIGURATION
+        const CONFIG = {
+            githubUsername: 'nihar-mehta-247339227',  // Your GitHub username for projects
+            githubRepo: {
+                owner: 'nihar-mehta-247339227',       // Your GitHub username
+                repo: 'nihar-mehta-247339227.github.io', // Your repository name
+                token: 'YOUR_GITHUB_TOKEN_HERE',      // Your GitHub Personal Access Token
+                messagesFile: 'messages.json'          // File to store messages
+            }
         };
 
-        // GitHub Configuration for storing messages
-        const GITHUB_CONFIG = {
-            owner: 'nihar-mehta-247339227', // Your GitHub username
-            repo: 'nihar-mehta-247339227.github.io', // Your repository name
-            token: '', // GitHub Personal Access Token (add in admin panel)
-            messagesFile: 'messages.json' // File to store messages
+        let portfolioData = {
+            messages: []
         };
 
         // Initialize
@@ -1114,18 +1063,6 @@
             if (stored) {
                 portfolioData = JSON.parse(stored);
                 document.getElementById('githubUsername').value = portfolioData.githubUsername;
-                
-                // Load GitHub config from localStorage
-                const storedConfig = localStorage.getItem('githubConfig');
-                if (storedConfig) {
-                    const config = JSON.parse(storedConfig);
-                    GITHUB_CONFIG.owner = config.owner || GITHUB_CONFIG.owner;
-                    GITHUB_CONFIG.repo = config.repo || GITHUB_CONFIG.repo;
-                    GITHUB_CONFIG.token = config.token || '';
-                    document.getElementById('githubToken').value = GITHUB_CONFIG.token;
-                    document.getElementById('repoOwner').value = GITHUB_CONFIG.owner;
-                    document.getElementById('repoName').value = GITHUB_CONFIG.repo;
-                }
             }
         }
 
@@ -1134,35 +1071,20 @@
             localStorage.setItem('portfolioData', JSON.stringify(portfolioData));
         }
 
-        // Save GitHub Config
-        function saveGitHubConfig() {
-            const config = {
-                owner: document.getElementById('repoOwner').value,
-                repo: document.getElementById('repoName').value,
-                token: document.getElementById('githubToken').value
-            };
-            
-            GITHUB_CONFIG.owner = config.owner;
-            GITHUB_CONFIG.repo = config.repo;
-            GITHUB_CONFIG.token = config.token;
-            
-            localStorage.setItem('githubConfig', JSON.stringify(config));
-            showNotification('GitHub configuration saved!', 'success');
-        }
-
         // Load Messages from GitHub Repository
         async function loadMessagesFromGitHub() {
-            if (!GITHUB_CONFIG.token) {
-                // Fall back to localStorage if no token
+            // Check if GitHub config is set
+            if (CONFIG.githubRepo.token === 'YOUR_GITHUB_TOKEN_HERE' || !CONFIG.githubRepo.token) {
+                console.log('GitHub token not configured. Using localStorage fallback.');
                 renderMessages();
                 return;
             }
 
             try {
-                const url = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.messagesFile}`;
+                const url = `https://api.github.com/repos/${CONFIG.githubRepo.owner}/${CONFIG.githubRepo.repo}/contents/${CONFIG.githubRepo.messagesFile}`;
                 const response = await fetch(url, {
                     headers: {
-                        'Authorization': `token ${GITHUB_CONFIG.token}`,
+                        'Authorization': `token ${CONFIG.githubRepo.token}`,
                         'Accept': 'application/vnd.github.v3+json'
                     }
                 });
@@ -1173,6 +1095,7 @@
                     const messages = JSON.parse(content);
                     portfolioData.messages = messages;
                     renderMessages();
+                    console.log('Messages loaded from GitHub successfully');
                 } else if (response.status === 404) {
                     // File doesn't exist yet, will be created on first message
                     console.log('Messages file not found, will be created on first message');
@@ -1189,19 +1112,20 @@
 
         // Save Messages to GitHub Repository
         async function saveMessagesToGitHub() {
-            if (!GITHUB_CONFIG.token) {
-                showNotification('GitHub token required. Add it in admin panel.', 'error');
+            // Check if GitHub config is set
+            if (CONFIG.githubRepo.token === 'YOUR_GITHUB_TOKEN_HERE' || !CONFIG.githubRepo.token) {
+                console.log('GitHub token not configured. Falling back to localStorage.');
                 return false;
             }
 
             try {
                 // Get current file SHA (if it exists)
-                const getUrl = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.messagesFile}`;
+                const getUrl = `https://api.github.com/repos/${CONFIG.githubRepo.owner}/${CONFIG.githubRepo.repo}/contents/${CONFIG.githubRepo.messagesFile}`;
                 let sha = null;
 
                 const getResponse = await fetch(getUrl, {
                     headers: {
-                        'Authorization': `token ${GITHUB_CONFIG.token}`,
+                        'Authorization': `token ${CONFIG.githubRepo.token}`,
                         'Accept': 'application/vnd.github.v3+json'
                     }
                 });
@@ -1215,35 +1139,300 @@
                 const content = btoa(JSON.stringify(portfolioData.messages, null, 2)); // Encode to base64
 
                 // Create or update file
-                const putUrl = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.messagesFile}`;
+                const putUrl = `https://api.github.com/repos/${CONFIG.githubRepo.owner}/${CONFIG.githubRepo.repo}/contents/${CONFIG.githubRepo.messagesFile}`;
                 const putResponse = await fetch(putUrl, {
                     method: 'PUT',
                     headers: {
-                        'Authorization': `token ${GITHUB_CONFIG.token}`,
+                        'Authorization': `token ${CONFIG.githubRepo.token}`,
                         'Accept': 'application/vnd.github.v3+json',
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        message: 'Update messages',
+                        message: 'Update contact messages',
                         content: content,
                         sha: sha
                     })
                 });
 
                 if (putResponse.ok) {
+                    console.log('Messages saved to GitHub successfully');
                     return true;
                 } else {
                     const error = await putResponse.json();
                     console.error('Error saving to GitHub:', error);
-                    showNotification('Error saving to GitHub: ' + (error.message || 'Unknown error'), 'error');
                     return false;
                 }
             } catch (error) {
                 console.error('Error saving messages to GitHub:', error);
-                showNotification('Error: ' + error.message, 'error');
                 return false;
             }
         }
+
+        // Parallax Effect
+        function setupScrollEffects() {
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const heroBackground = document.getElementById('heroBackground');
+                
+                // Parallax effect
+                heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+                
+                // Fade out hero background
+                const opacity = Math.max(1 - (scrolled / 600), 0);
+                heroBackground.style.opacity = opacity;
+            });
+        }
+
+        // Navigation
+        function setupNavigation() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    const offsetTop = targetSection.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active link
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Close mobile menu
+                    document.getElementById('navLinks').classList.remove('active');
+                });
+            });
+
+            // Active section on scroll
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section');
+                const scrollPos = window.scrollY + 100;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            });
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // GitHub Projects
+        async function loadGitHubProjects() {
+            const username = CONFIG.githubUsername;
+
+            const loading = document.getElementById('projectsLoading');
+            const grid = document.getElementById('projectsGrid');
+            
+            loading.style.display = 'block';
+            grid.innerHTML = '';
+
+            try {
+                const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=12`);
+                const repos = await response.json();
+                
+                loading.style.display = 'none';
+
+                if (repos.message === 'Not Found') {
+                    grid.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 3rem;">GitHub user not found</p>';
+                    return;
+                }
+
+                const originalRepos = repos.filter(repo => !repo.fork);
+                
+                if (originalRepos.length === 0) {
+                    grid.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 3rem;">No repositories found</p>';
+                    return;
+                }
+
+                originalRepos.forEach(repo => {
+                    const card = document.createElement('div');
+                    card.className = 'card project-card';
+                    card.innerHTML = `
+                        <h3 class="project-title">${repo.name}</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">${repo.description || 'No description'}</p>
+                        <div>
+                            <span class="language-tag">${repo.language || 'Code'}</span>
+                        </div>
+                        <div class="project-stats">
+                            <span><i class="fas fa-star"></i> ${repo.stargazers_count}</span>
+                            <span><i class="fas fa-code-branch"></i> ${repo.forks_count}</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="${repo.html_url}" target="_blank"><i class="fab fa-github"></i></a>
+                            ${repo.homepage ? `<a href="${repo.homepage}" target="_blank"><i class="fas fa-external-link-alt"></i></a>` : ''}
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+
+            } catch (error) {
+                loading.style.display = 'none';
+                grid.innerHTML = `<p style="text-align: center; color: var(--text-secondary); padding: 3rem;">Error loading projects: ${error.message}</p>`;
+                console.error('GitHub API Error:', error);
+            }
+        }
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+
+            const message = {
+                id: Date.now(),
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+                date: new Date().toLocaleString(),
+                read: false
+            };
+
+            portfolioData.messages.push(message);
+            
+            // Try to save to GitHub
+            const savedToGitHub = await saveMessagesToGitHub();
+            
+            if (savedToGitHub) {
+                showNotification('Message sent successfully! I will get back to you soon.', 'success');
+            } else {
+                // Fall back to localStorage
+                saveData();
+                showNotification('Message sent successfully! I will get back to you soon.', 'success');
+            }
+
+            renderMessages();
+
+            // Reset form
+            this.reset();
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        });
+
+        // Render Messages
+        function renderMessages() {
+            const messagesList = document.getElementById('messagesList');
+            const messageCount = document.getElementById('messageCount');
+            
+            messageCount.textContent = portfolioData.messages.length;
+
+            if (portfolioData.messages.length === 0) {
+                messagesList.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No messages yet</p>';
+                return;
+            }
+
+            messagesList.innerHTML = '';
+            
+            // Show newest first
+            const sortedMessages = [...portfolioData.messages].reverse();
+            
+            sortedMessages.forEach(msg => {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message-item';
+                messageDiv.innerHTML = `
+                    <div class="message-header">
+                        <strong>${msg.name}</strong>
+                        <button class="delete-btn" onclick="deleteMessage(${msg.id})">Delete</button>
+                    </div>
+                    <div style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">
+                        ${msg.email} • ${msg.date}
+                    </div>
+                    <div style="font-weight: 600; margin-bottom: 0.5rem;">Subject: ${msg.subject}</div>
+                    <div>${msg.message}</div>
+                `;
+                messagesList.appendChild(messageDiv);
+            });
+        }
+
+        // Delete Message
+        async function deleteMessage(id) {
+            if (confirm('Delete this message?')) {
+                portfolioData.messages = portfolioData.messages.filter(msg => msg.id !== id);
+                
+                // Try to save to GitHub
+                const savedToGitHub = await saveMessagesToGitHub();
+                
+                if (!savedToGitHub) {
+                    // Fall back to localStorage
+                    saveData();
+                }
+                
+                renderMessages();
+                showNotification('Message deleted', 'success');
+            }
+        }
+
+        // Admin Panel - Only visible if password is correct
+        const ADMIN_PASSWORD = 'your_secure_password_here'; // Change this to your password
+        let isAdminAuthenticated = false;
+
+        function toggleAdminPanel() {
+            const panel = document.getElementById('adminPanel');
+            
+            if (!isAdminAuthenticated) {
+                const password = prompt('Enter admin password:');
+                if (password === ADMIN_PASSWORD) {
+                    isAdminAuthenticated = true;
+                    panel.classList.add('open');
+                    loadMessagesFromGitHub();
+                } else {
+                    showNotification('Incorrect password!', 'error');
+                }
+            } else {
+                panel.classList.toggle('open');
+            }
+        }
+
+        // Close admin panel on outside click
+        document.addEventListener('click', function(e) {
+            const panel = document.getElementById('adminPanel');
+            const toggle = document.querySelector('.admin-toggle');
+            
+            if (!panel.contains(e.target) && !toggle.contains(e.target)) {
+                panel.classList.remove('open');
+            }
+        });
+
+        // Notifications
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.classList.add('show');
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 4000);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('adminPanel').classList.remove('open');
+            }
+        });
+    </script>
 
         // Parallax Effect
         function setupScrollEffects() {
