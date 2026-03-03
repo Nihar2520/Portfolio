@@ -1018,11 +1018,11 @@
         <p style="color: var(--text-secondary); margin-bottom: 2rem;">View and manage contact messages</p>
 
         <!-- Messages Section -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <div style="margin-bottom: 1rem;">
             <h3>Contact Messages (<span id="messageCount">0</span>)</h3>
-            <button onclick="loadMessagesFromGitHub()" style="background: var(--accent); color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">
-                <i class="fas fa-sync-alt"></i> Refresh
-            </button>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">
+                Messages are stored locally in your browser. Configure EmailJS to receive emails.
+            </p>
         </div>
         <div class="messages-list" id="messagesList">
             <p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No messages yet</p>
@@ -1033,14 +1033,16 @@
     <div class="notification" id="notification"></div>
 
     <script>
-        // Portfolio Data - HARDCODED CONFIGURATION
+        // Portfolio Configuration - HARDCODED
         const CONFIG = {
-            githubUsername: 'nihar-mehta-247339227',  // Your GitHub username for projects
-            githubRepo: {
-                owner: 'nihar-mehta-247339227',       // Your GitHub username
-                repo: 'nihar-mehta-247339227.github.io', // Your repository name
-                token: 'YOUR_GITHUB_TOKEN_HERE',      // Your GitHub Personal Access Token
-                messagesFile: 'messages.json'          // File to store messages
+            githubUsername: 'nihar-mehta-247339227',
+            adminPassword: 'your_secure_password_here', // Change this password
+            // EmailJS Configuration (Free service to send emails)
+            // Sign up at https://www.emailjs.com/ and replace these values
+            emailJS: {
+                serviceID: 'YOUR_SERVICE_ID',     // From EmailJS dashboard
+                templateID: 'YOUR_TEMPLATE_ID',   // From EmailJS dashboard
+                publicKey: 'YOUR_PUBLIC_KEY'      // From EmailJS dashboard
             }
         };
 
@@ -1048,124 +1050,43 @@
             messages: []
         };
 
+        let isAdminAuthenticated = false;
+
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             loadStoredData();
             loadGitHubProjects();
-            loadMessagesFromGitHub();
             setupScrollEffects();
             setupNavigation();
+            
+            // Load EmailJS if configured
+            if (CONFIG.emailJS.publicKey !== 'YOUR_PUBLIC_KEY') {
+                loadEmailJS();
+            }
         });
+
+        // Load EmailJS SDK
+        function loadEmailJS() {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
+            script.onload = function() {
+                emailjs.init(CONFIG.emailJS.publicKey);
+                console.log('EmailJS initialized');
+            };
+            document.head.appendChild(script);
+        }
 
         // Load stored data
         function loadStoredData() {
-            const stored = localStorage.getItem('portfolioData');
+            const stored = localStorage.getItem('portfolioMessages');
             if (stored) {
-                portfolioData = JSON.parse(stored);
-                document.getElementById('githubUsername').value = portfolioData.githubUsername;
+                portfolioData.messages = JSON.parse(stored);
             }
         }
 
         // Save data
         function saveData() {
-            localStorage.setItem('portfolioData', JSON.stringify(portfolioData));
-        }
-
-        // Load Messages from GitHub Repository
-        async function loadMessagesFromGitHub() {
-            // Check if GitHub config is set
-            if (CONFIG.githubRepo.token === 'YOUR_GITHUB_TOKEN_HERE' || !CONFIG.githubRepo.token) {
-                console.log('GitHub token not configured. Using localStorage fallback.');
-                renderMessages();
-                return;
-            }
-
-            try {
-                const url = `https://api.github.com/repos/${CONFIG.githubRepo.owner}/${CONFIG.githubRepo.repo}/contents/${CONFIG.githubRepo.messagesFile}`;
-                const response = await fetch(url, {
-                    headers: {
-                        'Authorization': `token ${CONFIG.githubRepo.token}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    const content = atob(data.content); // Decode base64
-                    const messages = JSON.parse(content);
-                    portfolioData.messages = messages;
-                    renderMessages();
-                    console.log('Messages loaded from GitHub successfully');
-                } else if (response.status === 404) {
-                    // File doesn't exist yet, will be created on first message
-                    console.log('Messages file not found, will be created on first message');
-                    renderMessages();
-                } else {
-                    console.error('Error loading messages:', response.status);
-                    renderMessages();
-                }
-            } catch (error) {
-                console.error('Error loading messages from GitHub:', error);
-                renderMessages();
-            }
-        }
-
-        // Save Messages to GitHub Repository
-        async function saveMessagesToGitHub() {
-            // Check if GitHub config is set
-            if (CONFIG.githubRepo.token === 'YOUR_GITHUB_TOKEN_HERE' || !CONFIG.githubRepo.token) {
-                console.log('GitHub token not configured. Falling back to localStorage.');
-                return false;
-            }
-
-            try {
-                // Get current file SHA (if it exists)
-                const getUrl = `https://api.github.com/repos/${CONFIG.githubRepo.owner}/${CONFIG.githubRepo.repo}/contents/${CONFIG.githubRepo.messagesFile}`;
-                let sha = null;
-
-                const getResponse = await fetch(getUrl, {
-                    headers: {
-                        'Authorization': `token ${CONFIG.githubRepo.token}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
-                });
-
-                if (getResponse.ok) {
-                    const data = await getResponse.json();
-                    sha = data.sha;
-                }
-
-                // Prepare content
-                const content = btoa(JSON.stringify(portfolioData.messages, null, 2)); // Encode to base64
-
-                // Create or update file
-                const putUrl = `https://api.github.com/repos/${CONFIG.githubRepo.owner}/${CONFIG.githubRepo.repo}/contents/${CONFIG.githubRepo.messagesFile}`;
-                const putResponse = await fetch(putUrl, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${CONFIG.githubRepo.token}`,
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        message: 'Update contact messages',
-                        content: content,
-                        sha: sha
-                    })
-                });
-
-                if (putResponse.ok) {
-                    console.log('Messages saved to GitHub successfully');
-                    return true;
-                } else {
-                    const error = await putResponse.json();
-                    console.error('Error saving to GitHub:', error);
-                    return false;
-                }
-            } catch (error) {
-                console.error('Error saving messages to GitHub:', error);
-                return false;
-            }
+            localStorage.setItem('portfolioMessages', JSON.stringify(portfolioData.messages));
         }
 
         // Parallax Effect
@@ -1290,7 +1211,7 @@
             }
         }
 
-        // Contact Form
+        // Contact Form - Sends email via EmailJS
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -1299,30 +1220,46 @@
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
 
-            const message = {
-                id: Date.now(),
+            const formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 subject: document.getElementById('subject').value,
                 message: document.getElementById('message').value,
+            };
+
+            const message = {
+                id: Date.now(),
+                ...formData,
                 date: new Date().toLocaleString(),
                 read: false
             };
 
+            // Save to localStorage
             portfolioData.messages.push(message);
-            
-            // Try to save to GitHub
-            const savedToGitHub = await saveMessagesToGitHub();
-            
-            if (savedToGitHub) {
-                showNotification('Message sent successfully! I will get back to you soon.', 'success');
-            } else {
-                // Fall back to localStorage
-                saveData();
-                showNotification('Message sent successfully! I will get back to you soon.', 'success');
-            }
+            saveData();
 
-            renderMessages();
+            // Try to send email via EmailJS
+            if (typeof emailjs !== 'undefined' && CONFIG.emailJS.serviceID !== 'YOUR_SERVICE_ID') {
+                try {
+                    await emailjs.send(
+                        CONFIG.emailJS.serviceID,
+                        CONFIG.emailJS.templateID,
+                        {
+                            from_name: formData.name,
+                            from_email: formData.email,
+                            subject: formData.subject,
+                            message: formData.message,
+                            to_email: 'mehtaniharhnd205@gmail.com' // Your email
+                        }
+                    );
+                    showNotification('Message sent successfully! I will get back to you soon.', 'success');
+                } catch (error) {
+                    console.error('EmailJS error:', error);
+                    showNotification('Message saved! Email service not configured.', 'success');
+                }
+            } else {
+                showNotification('Message saved locally! Configure EmailJS to receive emails.', 'success');
+            }
 
             // Reset form
             this.reset();
@@ -1366,36 +1303,25 @@
         }
 
         // Delete Message
-        async function deleteMessage(id) {
+        function deleteMessage(id) {
             if (confirm('Delete this message?')) {
                 portfolioData.messages = portfolioData.messages.filter(msg => msg.id !== id);
-                
-                // Try to save to GitHub
-                const savedToGitHub = await saveMessagesToGitHub();
-                
-                if (!savedToGitHub) {
-                    // Fall back to localStorage
-                    saveData();
-                }
-                
+                saveData();
                 renderMessages();
                 showNotification('Message deleted', 'success');
             }
         }
 
-        // Admin Panel - Only visible if password is correct
-        const ADMIN_PASSWORD = 'your_secure_password_here'; // Change this to your password
-        let isAdminAuthenticated = false;
-
+        // Admin Panel - Password Protected
         function toggleAdminPanel() {
             const panel = document.getElementById('adminPanel');
             
             if (!isAdminAuthenticated) {
                 const password = prompt('Enter admin password:');
-                if (password === ADMIN_PASSWORD) {
+                if (password === CONFIG.adminPassword) {
                     isAdminAuthenticated = true;
                     panel.classList.add('open');
-                    loadMessagesFromGitHub();
+                    renderMessages();
                 } else {
                     showNotification('Incorrect password!', 'error');
                 }
