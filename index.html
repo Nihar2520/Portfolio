@@ -75,7 +75,6 @@
             font-size: 2rem;
             font-weight: 900;
             color: var(--accent);
-            letter-spacing: -1px;
         }
 
         .nav-links {
@@ -110,16 +109,9 @@
             height: 3px;
             background: var(--accent);
             margin: 3px 0;
-            transition: 0.3s;
         }
 
         /* Content sections */
-        .content-wrapper {
-            position: relative;
-            z-index: 1;
-            background: transparent;
-        }
-
         section {
             min-height: 100vh;
             padding: 6rem 0;
@@ -128,7 +120,6 @@
 
         section:not(#home) {
             background: var(--primary);
-            margin-top: -1px;
         }
 
         .container {
@@ -158,7 +149,6 @@
         .hero-content .subtitle {
             font-size: 2rem;
             margin-bottom: 2rem;
-            font-weight: 500;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
@@ -166,7 +156,6 @@
             max-width: 700px;
             margin: 0 auto 3rem auto;
             font-size: 1.3rem;
-            line-height: 1.8;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
@@ -189,7 +178,6 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 1rem;
         }
 
         .btn:hover {
@@ -202,7 +190,6 @@
         .btn-outline {
             background: transparent;
             color: white;
-            border: 2px solid white;
         }
 
         .btn-outline:hover {
@@ -320,10 +307,6 @@
             gap: 2rem;
         }
 
-        .project-card {
-            border: 2px solid var(--border);
-        }
-
         .project-title {
             font-size: 1.5rem;
             font-weight: 700;
@@ -358,7 +341,6 @@
         .project-links a {
             color: var(--accent);
             font-size: 1.3rem;
-            transition: color 0.3s;
         }
 
         /* Certificates Section */
@@ -404,7 +386,6 @@
         .timeline-item {
             position: relative;
             margin-bottom: 3rem;
-            padding-bottom: 2rem;
         }
 
         .timeline-item::before {
@@ -429,7 +410,6 @@
         .timeline-title {
             font-size: 1.4rem;
             font-weight: 700;
-            color: var(--text-primary);
         }
 
         .timeline-company {
@@ -473,7 +453,6 @@
         .contact-item a {
             color: var(--text-primary);
             text-decoration: none;
-            transition: color 0.3s;
         }
 
         .contact-item a:hover {
@@ -495,7 +474,6 @@
         .form-group label {
             margin-bottom: 0.5rem;
             font-weight: 600;
-            color: var(--text-primary);
         }
 
         .form-group input,
@@ -505,7 +483,6 @@
             border-radius: 8px;
             font-family: inherit;
             font-size: 1rem;
-            transition: border-color 0.3s;
         }
 
         .form-group input:focus,
@@ -535,80 +512,6 @@
             background: #000;
             transform: translateY(-2px);
             box-shadow: var(--shadow-hover);
-        }
-
-        /* Admin Panel */
-        .admin-panel {
-            position: fixed;
-            top: 0;
-            right: -500px;
-            width: 500px;
-            height: 100vh;
-            background: white;
-            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
-            z-index: 2000;
-            transition: right 0.3s;
-            overflow-y: auto;
-            padding: 2rem;
-            border-left: 2px solid var(--border);
-        }
-
-        .admin-panel.open {
-            right: 0;
-        }
-
-        .admin-toggle {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 1.2rem;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 1500;
-            font-size: 1.3rem;
-            box-shadow: var(--shadow-hover);
-            transition: all 0.3s;
-        }
-
-        .admin-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .messages-list {
-            margin-top: 2rem;
-        }
-
-        .message-item {
-            background: var(--secondary);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--accent);
-        }
-
-        .message-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .message-date {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
-
-        .delete-btn {
-            background: #dc3545;
-            color: white;
-            border: none;
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8rem;
         }
 
         /* Notification */
@@ -677,11 +580,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .admin-panel {
-                width: 100%;
-                right: -100%;
-            }
-
             .section-title {
                 font-size: 2rem;
             }
@@ -712,382 +610,313 @@
         </div>
     </nav>
 
-    <!-- Content Wrapper -->
-    <div class="content-wrapper">
-        <!-- Home Section -->
-        <section id="home">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>Nihar Mehta</h1>
-                    <p class="subtitle">Cybersecurity Professional & Security Analyst</p>
-                    <p class="description">
-                        Skilled security analyst with expertise in threat detection, incident response, and digital forensics. 
-                        Passionate about protecting digital assets and building robust cybersecurity solutions.
+    <!-- Home Section -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Nihar Mehta</h1>
+                <p class="subtitle">Cybersecurity Professional & Security Analyst</p>
+                <p class="description">
+                    Skilled security analyst with expertise in threat detection, incident response, and digital forensics. 
+                    Passionate about protecting digital assets and building robust cybersecurity solutions.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn">
+                        <i class="fas fa-code"></i>
+                        View Projects
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-envelope"></i>
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Get to know my background and expertise</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="card profile-card">
+                    <div class="profile-image">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Security Analyst</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8);">Dedicated to cybersecurity excellence</p>
+                </div>
+                <div class="card">
+                    <p>
+                        Security Analyst with a solid background in cybersecurity operations and network infrastructure. 
+                        Skilled in automating threat detection, incident response, and process improvements that enhance 
+                        security posture. Demonstrated ability in analyzing digital artifacts and monitoring network 
+                        performance to identify vulnerabilities. Well-prepared to transition into threat intelligence, 
+                        supporting proactive cybersecurity measures and tailored intelligence outputs.
                     </p>
-                    <div class="cta-buttons">
-                        <a href="#projects" class="btn">
-                            <i class="fas fa-code"></i>
-                            View Projects
-                        </a>
-                        <a href="#contact" class="btn btn-outline">
-                            <i class="fas fa-envelope"></i>
-                            Get In Touch
-                        </a>
-                    </div>
                 </div>
             </div>
-        </section>
 
-        <!-- About Section -->
-        <section id="about">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">About Me</h2>
-                    <p class="section-subtitle">Get to know my background and expertise</p>
+            <div class="skills-grid">
+                <div class="card">
+                    <h3><i class="fas fa-shield-alt"></i> Cybersecurity</h3>
+                    <ul class="skill-list">
+                        <li>Network Protocols <span>⭐⭐⭐⭐⭐</span></li>
+                        <li>Firewalls <span>⭐⭐⭐⭐⭐</span></li>
+                        <li>Incident Response <span>⭐⭐⭐⭐⭐</span></li>
+                        <li>Penetration Testing <span>⭐⭐⭐⭐</span></li>
+                    </ul>
                 </div>
-
-                <div class="about-grid">
-                    <div class="card profile-card">
-                        <div class="profile-image">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3>Security Analyst</h3>
-                        <p style="color: rgba(255, 255, 255, 0.8);">Dedicated to cybersecurity excellence</p>
-                    </div>
-                    <div class="card">
-                        <p id="aboutDescription">
-                            Security Analyst with a solid background in cybersecurity operations and network infrastructure. 
-                            Skilled in automating threat detection, incident response, and process improvements that enhance 
-                            security posture. Demonstrated ability in analyzing digital artifacts and monitoring network 
-                            performance to identify vulnerabilities. Well-prepared to transition into threat intelligence, 
-                            supporting proactive cybersecurity measures and tailored intelligence outputs.
-                        </p>
-                    </div>
+                <div class="card">
+                    <h3><i class="fas fa-cloud"></i> Cloud Security</h3>
+                    <ul class="skill-list">
+                        <li>AWS Security <span>⭐⭐⭐⭐</span></li>
+                        <li>GCP Security <span>⭐⭐⭐</span></li>
+                        <li>Azure Security <span>⭐⭐⭐</span></li>
+                        <li>Kubernetes <span>⭐⭐⭐</span></li>
+                    </ul>
                 </div>
-
-                <div class="skills-grid">
-                    <div class="card">
-                        <h3><i class="fas fa-shield-alt"></i> Cybersecurity</h3>
-                        <ul class="skill-list">
-                            <li>Network Protocols <span>⭐⭐⭐⭐⭐</span></li>
-                            <li>Firewalls <span>⭐⭐⭐⭐⭐</span></li>
-                            <li>Incident Response <span>⭐⭐⭐⭐⭐</span></li>
-                            <li>Penetration Testing <span>⭐⭐⭐⭐</span></li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3><i class="fas fa-cloud"></i> Cloud Security</h3>
-                        <ul class="skill-list">
-                            <li>AWS Security <span>⭐⭐⭐⭐</span></li>
-                            <li>GCP Security <span>⭐⭐⭐</span></li>
-                            <li>Azure Security <span>⭐⭐⭐</span></li>
-                            <li>Kubernetes <span>⭐⭐⭐</span></li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3><i class="fas fa-code"></i> Programming</h3>
-                        <ul class="skill-list">
-                            <li>Python <span>⭐⭐⭐⭐⭐</span></li>
-                            <li>SQL <span>⭐⭐⭐⭐</span></li>
-                            <li>HTML/CSS/JS <span>⭐⭐⭐⭐</span></li>
-                            <li>Bash <span>⭐⭐⭐⭐</span></li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3><i class="fas fa-globe"></i> Languages</h3>
-                        <ul class="skill-list">
-                            <li>English <span>C1</span></li>
-                            <li>Hindi <span>C1</span></li>
-                            <li>Gujarati <span>C2</span></li>
-                            <li>German <span>A1</span></li>
-                        </ul>
-                    </div>
+                <div class="card">
+                    <h3><i class="fas fa-code"></i> Programming</h3>
+                    <ul class="skill-list">
+                        <li>Python <span>⭐⭐⭐⭐⭐</span></li>
+                        <li>SQL <span>⭐⭐⭐⭐</span></li>
+                        <li>HTML/CSS/JS <span>⭐⭐⭐⭐</span></li>
+                        <li>Bash <span>⭐⭐⭐⭐</span></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-globe"></i> Languages</h3>
+                    <ul class="skill-list">
+                        <li>English <span>C1</span></li>
+                        <li>Hindi <span>C1</span></li>
+                        <li>Gujarati <span>C2</span></li>
+                        <li>German <span>A1</span></li>
+                    </ul>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Projects Section -->
-        <section id="projects">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Projects</h2>
-                    <p class="section-subtitle">Check out my recent work on GitHub</p>
-                </div>
-                <div class="loading" id="projectsLoading">
-                    <i class="fas fa-spinner fa-spin"></i> Loading projects...
-                </div>
-                <div class="projects-grid" id="projectsGrid"></div>
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Projects</h2>
+                <p class="section-subtitle">Check out my recent work on GitHub</p>
             </div>
-        </section>
+            <div class="loading" id="projectsLoading">
+                <i class="fas fa-spinner fa-spin"></i> Loading projects...
+            </div>
+            <div class="projects-grid" id="projectsGrid"></div>
+        </div>
+    </section>
 
-        <!-- Certificates Section -->
-        <section id="certificates">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Certificates</h2>
-                    <p class="section-subtitle">Professional certifications and achievements</p>
+    <!-- Certificates Section -->
+    <section id="certificates">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Certificates</h2>
+                <p class="section-subtitle">Professional certifications and achievements</p>
+            </div>
+            <div class="certificates-grid">
+                <div class="card certificate-card">
+                    <div class="certificate-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="certificate-title">EC-Council Certified Security Analyst</h3>
+                    <p style="color: var(--text-secondary);">EC-Council</p>
                 </div>
-                <div class="certificates-grid">
-                    <div class="card certificate-card">
-                        <div class="certificate-icon"><i class="fas fa-shield-alt"></i></div>
-                        <h3 class="certificate-title">EC-Council Certified Security Analyst</h3>
-                        <p style="color: var(--text-secondary);">EC-Council</p>
-                    </div>
-                    <div class="card certificate-card">
-                        <div class="certificate-icon"><i class="fas fa-search"></i></div>
-                        <h3 class="certificate-title">Security Operation Center</h3>
-                        <p style="color: var(--text-secondary);">IBM</p>
-                    </div>
-                    <div class="card certificate-card">
-                        <div class="certificate-icon"><i class="fas fa-building"></i></div>
-                        <h3 class="certificate-title">Cybersecurity Architecture</h3>
-                        <p style="color: var(--text-secondary);">IBM</p>
-                    </div>
-                    <div class="card certificate-card">
-                        <div class="certificate-icon"><i class="fas fa-user-secret"></i></div>
-                        <h3 class="certificate-title">Cisco Certified Ethical Hacker</h3>
-                        <p style="color: var(--text-secondary);">Cisco</p>
-                    </div>
-                    <div class="card certificate-card">
-                        <div class="certificate-icon"><i class="fas fa-user-shield"></i></div>
-                        <h3 class="certificate-title">Jr Cybersecurity Analyst</h3>
-                        <p style="color: var(--text-secondary);">Cisco</p>
-                    </div>
-                    <div class="card certificate-card">
-                        <div class="certificate-icon"><i class="fas fa-cog"></i></div>
-                        <h3 class="certificate-title">CEH v13 (in progress)</h3>
-                        <p style="color: var(--text-secondary);">EC-Council</p>
-                    </div>
+                <div class="card certificate-card">
+                    <div class="certificate-icon"><i class="fas fa-search"></i></div>
+                    <h3 class="certificate-title">Security Operation Center</h3>
+                    <p style="color: var(--text-secondary);">IBM</p>
+                </div>
+                <div class="card certificate-card">
+                    <div class="certificate-icon"><i class="fas fa-building"></i></div>
+                    <h3 class="certificate-title">Cybersecurity Architecture</h3>
+                    <p style="color: var(--text-secondary);">IBM</p>
+                </div>
+                <div class="card certificate-card">
+                    <div class="certificate-icon"><i class="fas fa-user-secret"></i></div>
+                    <h3 class="certificate-title">Cisco Certified Ethical Hacker</h3>
+                    <p style="color: var(--text-secondary);">Cisco</p>
+                </div>
+                <div class="card certificate-card">
+                    <div class="certificate-icon"><i class="fas fa-user-shield"></i></div>
+                    <h3 class="certificate-title">Jr Cybersecurity Analyst</h3>
+                    <p style="color: var(--text-secondary);">Cisco</p>
+                </div>
+                <div class="card certificate-card">
+                    <div class="certificate-icon"><i class="fas fa-cog"></i></div>
+                    <h3 class="certificate-title">CEH v13 (in progress)</h3>
+                    <p style="color: var(--text-secondary);">EC-Council</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Resume Section -->
-        <section id="resume">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Resume</h2>
-                    <p class="section-subtitle">My professional journey</p>
-                </div>
+    <!-- Resume Section -->
+    <section id="resume">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Resume</h2>
+                <p class="section-subtitle">My professional journey</p>
+            </div>
 
-                <div class="card" style="margin-bottom: 3rem;">
-                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--accent);">
-                        <i class="fas fa-graduation-cap"></i> Education
-                    </h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-header">
-                                <div>
-                                    <div class="timeline-title">M.SC., Cybersecurity & Forensics</div>
-                                    <div class="timeline-company">Parul University</div>
-                                    <div style="color: var(--text-secondary); font-style: italic;">Vadodara, India</div>
-                                </div>
-                                <div class="timeline-date">Sep 2023 - May 2025</div>
+            <div class="card" style="margin-bottom: 3rem;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--accent);">
+                    <i class="fas fa-graduation-cap"></i> Education
+                </h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">M.SC., Cybersecurity & Forensics</div>
+                                <div class="timeline-company">Parul University</div>
+                                <div style="color: var(--text-secondary); font-style: italic;">Vadodara, India</div>
                             </div>
+                            <div class="timeline-date">Sep 2023 - May 2025</div>
                         </div>
-                        <div class="timeline-item">
-                            <div class="timeline-header">
-                                <div>
-                                    <div class="timeline-title">B.SC, Computer Science</div>
-                                    <div class="timeline-company">University of Mumbai</div>
-                                    <div style="color: var(--text-secondary); font-style: italic;">Mumbai, India</div>
-                                </div>
-                                <div class="timeline-date">Jul 2020 - Aug 2023</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">B.SC, Computer Science</div>
+                                <div class="timeline-company">University of Mumbai</div>
+                                <div style="color: var(--text-secondary); font-style: italic;">Mumbai, India</div>
                             </div>
+                            <div class="timeline-date">Jul 2020 - Aug 2023</div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--accent);">
+                    <i class="fas fa-briefcase"></i> Experience
+                </h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Security Analyst Intern</div>
+                                <div class="timeline-company">ZeronSec India Pvt. Ltd.</div>
+                                <div style="color: var(--text-secondary); font-style: italic;">Vadodara, India</div>
+                            </div>
+                            <div class="timeline-date">Jan 2025 - July 2025</div>
+                        </div>
+                        <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                            <li>Monitored security alerts using SIEM tools and integrated Splunk to enhance threat detection</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Freelance Cybersecurity Consultant</div>
+                                <div class="timeline-company">Freelance</div>
+                                <div style="color: var(--text-secondary); font-style: italic;">Gujarat, India</div>
+                            </div>
+                            <div class="timeline-date">Jan 2025 - May 2025</div>
+                        </div>
+                        <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                            <li>Designed tailored SOAR playbooks using Shuffle, integrating Wazuh, MISP, TheHive</li>
+                            <li>Enhanced threat containment and remediation workflows</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <div>
+                                <div class="timeline-title">Digital Forensics Intern</div>
+                                <div class="timeline-company">IIMT</div>
+                                <div style="color: var(--text-secondary); font-style: italic;">UP, India</div>
+                            </div>
+                            <div class="timeline-date">Jun 2024 - Aug 2024</div>
+                        </div>
+                        <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                            <li>Analyzed 50+ digital artifacts and improved forensic workflow efficiency by 15%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contact Me</h2>
+                <p class="section-subtitle">Let's connect and discuss opportunities</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="card contact-info-card">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--accent);">Get In Touch</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:mehtaniharhnd205@gmail.com">mehtaniharhnd205@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+919137800893">+91 9137800893</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/in/nihar-mehta-247339227" target="_blank">LinkedIn Profile</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Mumbai, India</span>
                     </div>
                 </div>
 
                 <div class="card">
-                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--accent);">
-                        <i class="fas fa-briefcase"></i> Experience
-                    </h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-header">
-                                <div>
-                                    <div class="timeline-title">Security Analyst Intern</div>
-                                    <div class="timeline-company">ZeronSec India Pvt. Ltd.</div>
-                                    <div style="color: var(--text-secondary); font-style: italic;">Vadodara, India</div>
-                                </div>
-                                <div class="timeline-date">Jan 2025 - July 2025</div>
-                            </div>
-                            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
-                                <li>Monitored security alerts using SIEM tools and integrated Splunk to enhance threat detection capabilities</li>
-                            </ul>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--accent);">Send Message</h3>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Your name">
                         </div>
-                        <div class="timeline-item">
-                            <div class="timeline-header">
-                                <div>
-                                    <div class="timeline-title">Freelance Cybersecurity Consultant</div>
-                                    <div class="timeline-company">Freelance</div>
-                                    <div style="color: var(--text-secondary); font-style: italic;">Gujarat, India</div>
-                                </div>
-                                <div class="timeline-date">Jan 2025 - May 2025</div>
-                            </div>
-                            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
-                                <li>Designed tailored SOAR playbooks using Shuffle, integrating Wazuh, MISP, TheHive</li>
-                                <li>Enhanced threat containment and remediation workflows</li>
-                            </ul>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
                         </div>
-                        <div class="timeline-item">
-                            <div class="timeline-header">
-                                <div>
-                                    <div class="timeline-title">Digital Forensics Intern</div>
-                                    <div class="timeline-company">IIMT</div>
-                                    <div style="color: var(--text-secondary); font-style: italic;">UP, India</div>
-                                </div>
-                                <div class="timeline-date">Jun 2024 - Aug 2024</div>
-                            </div>
-                            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
-                                <li>Analyzed 50+ digital artifacts and improved forensic workflow efficiency by 15%</li>
-                            </ul>
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" name="subject" required placeholder="What is this about?">
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" required placeholder="Your message here..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
                 </div>
             </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Contact Me</h2>
-                    <p class="section-subtitle">Let's connect and discuss opportunities</p>
-                </div>
-
-                <div class="contact-grid">
-                    <div class="card contact-info-card">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--accent);">Get In Touch</h3>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:mehtaniharhnd205@gmail.com">mehtaniharhnd205@gmail.com</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:+919137800893">+91 9137800893</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fab fa-linkedin"></i>
-                            <a href="https://linkedin.com/in/nihar-mehta-247339227" target="_blank">LinkedIn Profile</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Mumbai, India</span>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--accent);">Send Message</h3>
-                        <form class="contact-form" id="contactForm">
-                            <div class="form-group">
-                                <label for="name">Name *</label>
-                                <input type="text" id="name" required placeholder="Your name">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email *</label>
-                                <input type="email" id="email" required placeholder="your.email@example.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Subject *</label>
-                                <input type="text" id="subject" required placeholder="What is this about?">
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message *</label>
-                                <textarea id="message" required placeholder="Your message here..."></textarea>
-                            </div>
-                            <button type="submit" class="submit-btn">
-                                <i class="fas fa-paper-plane"></i> Send Message
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Admin Panel - Password Protected -->
-    <button class="admin-toggle" onclick="toggleAdminPanel()" title="Admin Access (Password Protected)">
-        <i class="fas fa-lock"></i>
-    </button>
-
-    <div class="admin-panel" id="adminPanel">
-        <h2 style="margin-bottom: 1rem;">
-            <i class="fas fa-shield-alt"></i> Admin Dashboard
-        </h2>
-        <p style="color: var(--text-secondary); margin-bottom: 2rem;">View and manage contact messages</p>
-
-        <!-- Messages Section -->
-        <div style="margin-bottom: 1rem;">
-            <h3>Contact Messages (<span id="messageCount">0</span>)</h3>
-            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">
-                Messages are stored locally in your browser. Configure EmailJS to receive emails.
-            </p>
         </div>
-        <div class="messages-list" id="messagesList">
-            <p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No messages yet</p>
-        </div>
-    </div>
+    </section>
 
     <!-- Notification -->
     <div class="notification" id="notification"></div>
 
     <script>
-        // Portfolio Configuration - HARDCODED
+        // Configuration
         const CONFIG = {
             githubUsername: 'nihar-mehta-247339227',
-            adminPassword: 'your_secure_password_here', // Change this password
-            // EmailJS Configuration (Free service to send emails)
-            // Sign up at https://www.emailjs.com/ and replace these values
-            emailJS: {
-                serviceID: 'YOUR_SERVICE_ID',     // From EmailJS dashboard
-                templateID: 'YOUR_TEMPLATE_ID',   // From EmailJS dashboard
-                publicKey: 'YOUR_PUBLIC_KEY'      // From EmailJS dashboard
-            }
+            formspreeID: 'YOUR_FORM_ID' // Get from https://formspree.io
         };
-
-        let portfolioData = {
-            messages: []
-        };
-
-        let isAdminAuthenticated = false;
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            loadStoredData();
             loadGitHubProjects();
             setupScrollEffects();
             setupNavigation();
-            
-            // Load EmailJS if configured
-            if (CONFIG.emailJS.publicKey !== 'YOUR_PUBLIC_KEY') {
-                loadEmailJS();
-            }
         });
-
-        // Load EmailJS SDK
-        function loadEmailJS() {
-            const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
-            script.onload = function() {
-                emailjs.init(CONFIG.emailJS.publicKey);
-                console.log('EmailJS initialized');
-            };
-            document.head.appendChild(script);
-        }
-
-        // Load stored data
-        function loadStoredData() {
-            const stored = localStorage.getItem('portfolioMessages');
-            if (stored) {
-                portfolioData.messages = JSON.parse(stored);
-            }
-        }
-
-        // Save data
-        function saveData() {
-            localStorage.setItem('portfolioMessages', JSON.stringify(portfolioData.messages));
-        }
 
         // Parallax Effect
         function setupScrollEffects() {
@@ -1095,10 +924,7 @@
                 const scrolled = window.pageYOffset;
                 const heroBackground = document.getElementById('heroBackground');
                 
-                // Parallax effect
                 heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
-                
-                // Fade out hero background
                 const opacity = Math.max(1 - (scrolled / 600), 0);
                 heroBackground.style.opacity = opacity;
             });
@@ -1120,11 +946,9 @@
                         behavior: 'smooth'
                     });
                     
-                    // Update active link
                     navLinks.forEach(l => l.classList.remove('active'));
                     this.classList.add('active');
                     
-                    // Close mobile menu
                     document.getElementById('navLinks').classList.remove('active');
                 });
             });
@@ -1158,7 +982,6 @@
         // GitHub Projects
         async function loadGitHubProjects() {
             const username = CONFIG.githubUsername;
-
             const loading = document.getElementById('projectsLoading');
             const grid = document.getElementById('projectsGrid');
             
@@ -1185,7 +1008,7 @@
 
                 originalRepos.forEach(repo => {
                     const card = document.createElement('div');
-                    card.className = 'card project-card';
+                    card.className = 'card';
                     card.innerHTML = `
                         <h3 class="project-title">${repo.name}</h3>
                         <p style="color: var(--text-secondary); margin-bottom: 1rem;">${repo.description || 'No description'}</p>
@@ -1206,281 +1029,7 @@
 
             } catch (error) {
                 loading.style.display = 'none';
-                grid.innerHTML = `<p style="text-align: center; color: var(--text-secondary); padding: 3rem;">Error loading projects: ${error.message}</p>`;
-                console.error('GitHub API Error:', error);
-            }
-        }
-
-        // Contact Form - Sends email via EmailJS
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const submitBtn = this.querySelector('.submit-btn');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            submitBtn.disabled = true;
-
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value,
-            };
-
-            const message = {
-                id: Date.now(),
-                ...formData,
-                date: new Date().toLocaleString(),
-                read: false
-            };
-
-            // Save to localStorage
-            portfolioData.messages.push(message);
-            saveData();
-
-            // Try to send email via EmailJS
-            if (typeof emailjs !== 'undefined' && CONFIG.emailJS.serviceID !== 'YOUR_SERVICE_ID') {
-                try {
-                    await emailjs.send(
-                        CONFIG.emailJS.serviceID,
-                        CONFIG.emailJS.templateID,
-                        {
-                            from_name: formData.name,
-                            from_email: formData.email,
-                            subject: formData.subject,
-                            message: formData.message,
-                            to_email: 'mehtaniharhnd205@gmail.com' // Your email
-                        }
-                    );
-                    showNotification('Message sent successfully! I will get back to you soon.', 'success');
-                } catch (error) {
-                    console.error('EmailJS error:', error);
-                    showNotification('Message saved! Email service not configured.', 'success');
-                }
-            } else {
-                showNotification('Message saved locally! Configure EmailJS to receive emails.', 'success');
-            }
-
-            // Reset form
-            this.reset();
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        });
-
-        // Render Messages
-        function renderMessages() {
-            const messagesList = document.getElementById('messagesList');
-            const messageCount = document.getElementById('messageCount');
-            
-            messageCount.textContent = portfolioData.messages.length;
-
-            if (portfolioData.messages.length === 0) {
-                messagesList.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No messages yet</p>';
-                return;
-            }
-
-            messagesList.innerHTML = '';
-            
-            // Show newest first
-            const sortedMessages = [...portfolioData.messages].reverse();
-            
-            sortedMessages.forEach(msg => {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'message-item';
-                messageDiv.innerHTML = `
-                    <div class="message-header">
-                        <strong>${msg.name}</strong>
-                        <button class="delete-btn" onclick="deleteMessage(${msg.id})">Delete</button>
-                    </div>
-                    <div style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">
-                        ${msg.email} • ${msg.date}
-                    </div>
-                    <div style="font-weight: 600; margin-bottom: 0.5rem;">Subject: ${msg.subject}</div>
-                    <div>${msg.message}</div>
-                `;
-                messagesList.appendChild(messageDiv);
-            });
-        }
-
-        // Delete Message
-        function deleteMessage(id) {
-            if (confirm('Delete this message?')) {
-                portfolioData.messages = portfolioData.messages.filter(msg => msg.id !== id);
-                saveData();
-                renderMessages();
-                showNotification('Message deleted', 'success');
-            }
-        }
-
-        // Admin Panel - Password Protected
-        function toggleAdminPanel() {
-            const panel = document.getElementById('adminPanel');
-            
-            if (!isAdminAuthenticated) {
-                const password = prompt('Enter admin password:');
-                if (password === CONFIG.adminPassword) {
-                    isAdminAuthenticated = true;
-                    panel.classList.add('open');
-                    renderMessages();
-                } else {
-                    showNotification('Incorrect password!', 'error');
-                }
-            } else {
-                panel.classList.toggle('open');
-            }
-        }
-
-        // Close admin panel on outside click
-        document.addEventListener('click', function(e) {
-            const panel = document.getElementById('adminPanel');
-            const toggle = document.querySelector('.admin-toggle');
-            
-            if (!panel.contains(e.target) && !toggle.contains(e.target)) {
-                panel.classList.remove('open');
-            }
-        });
-
-        // Notifications
-        function showNotification(message, type = 'success') {
-            const notification = document.getElementById('notification');
-            notification.textContent = message;
-            notification.className = `notification ${type}`;
-            notification.classList.add('show');
-
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 4000);
-        }
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                document.getElementById('adminPanel').classList.remove('open');
-            }
-        });
-    </script>
-
-        // Parallax Effect
-        function setupScrollEffects() {
-            window.addEventListener('scroll', function() {
-                const scrolled = window.pageYOffset;
-                const heroBackground = document.getElementById('heroBackground');
-                
-                // Parallax effect
-                heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
-                
-                // Fade out hero background
-                const opacity = Math.max(1 - (scrolled / 600), 0);
-                heroBackground.style.opacity = opacity;
-            });
-        }
-
-        // Navigation
-        function setupNavigation() {
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    
-                    const offsetTop = targetSection.offsetTop - 80;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Update active link
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Close mobile menu
-                    document.getElementById('navLinks').classList.remove('active');
-                });
-            });
-
-            // Active section on scroll
-            window.addEventListener('scroll', function() {
-                const sections = document.querySelectorAll('section');
-                const scrollPos = window.scrollY + 100;
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.offsetHeight;
-                    const sectionId = section.getAttribute('id');
-                    
-                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('href') === `#${sectionId}`) {
-                                link.classList.add('active');
-                            }
-                        });
-                    }
-                });
-            });
-        }
-
-        function toggleMobileMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
-        }
-
-        // GitHub Projects
-        async function loadGitHubProjects() {
-            const username = document.getElementById('githubUsername').value || portfolioData.githubUsername;
-            portfolioData.githubUsername = username;
-            saveData();
-
-            const loading = document.getElementById('projectsLoading');
-            const grid = document.getElementById('projectsGrid');
-            
-            loading.style.display = 'block';
-            grid.innerHTML = '';
-
-            try {
-                const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=12`);
-                const repos = await response.json();
-                
-                loading.style.display = 'none';
-
-                if (repos.message === 'Not Found') {
-                    grid.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 3rem;">GitHub user not found</p>';
-                    return;
-                }
-
-                const originalRepos = repos.filter(repo => !repo.fork);
-                
-                if (originalRepos.length === 0) {
-                    grid.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 3rem;">No repositories found</p>';
-                    return;
-                }
-
-                originalRepos.forEach(repo => {
-                    const card = document.createElement('div');
-                    card.className = 'card project-card';
-                    card.innerHTML = `
-                        <h3 class="project-title">${repo.name}</h3>
-                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">${repo.description || 'No description'}</p>
-                        <div>
-                            <span class="language-tag">${repo.language || 'Code'}</span>
-                        </div>
-                        <div class="project-stats">
-                            <span><i class="fas fa-star"></i> ${repo.stargazers_count}</span>
-                            <span><i class="fas fa-code-branch"></i> ${repo.forks_count}</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="${repo.html_url}" target="_blank"><i class="fab fa-github"></i></a>
-                            ${repo.homepage ? `<a href="${repo.homepage}" target="_blank"><i class="fas fa-external-link-alt"></i></a>` : ''}
-                        </div>
-                    `;
-                    grid.appendChild(card);
-                });
-
-                showNotification('Projects loaded successfully!', 'success');
-            } catch (error) {
-                loading.style.display = 'none';
-                grid.innerHTML = `<p style="text-align: center; color: var(--text-secondary); padding: 3rem;">Error loading projects: ${error.message}</p>`;
+                grid.innerHTML = `<p style="text-align: center; color: var(--text-secondary); padding: 3rem;">Error loading projects</p>`;
             }
         }
 
@@ -1493,103 +1042,36 @@
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
 
-            const message = {
-                id: Date.now(),
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value,
-                date: new Date().toLocaleString(),
-                read: false
-            };
-
-            portfolioData.messages.push(message);
-            
-            // Try to save to GitHub
-            const savedToGitHub = await saveMessagesToGitHub();
-            
-            if (savedToGitHub) {
-                showNotification('Message sent and saved to GitHub successfully!', 'success');
-            } else {
-                // Fall back to localStorage
-                saveData();
-                showNotification('Message saved locally. Configure GitHub token in admin panel to save to repository.', 'success');
-            }
-
-            renderMessages();
-
-            // Reset form
-            this.reset();
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        });
-
-        // Render Messages
-        function renderMessages() {
-            const messagesList = document.getElementById('messagesList');
-            const messageCount = document.getElementById('messageCount');
-            
-            messageCount.textContent = portfolioData.messages.length;
-
-            if (portfolioData.messages.length === 0) {
-                messagesList.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No messages yet</p>';
+            if (CONFIG.formspreeID === 'YOUR_FORM_ID') {
+                showNotification('Please configure Formspree to receive messages!', 'error');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
                 return;
             }
 
-            messagesList.innerHTML = '';
-            
-            // Show newest first
-            const sortedMessages = [...portfolioData.messages].reverse();
-            
-            sortedMessages.forEach(msg => {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'message-item';
-                messageDiv.innerHTML = `
-                    <div class="message-header">
-                        <strong>${msg.name}</strong>
-                        <button class="delete-btn" onclick="deleteMessage(${msg.id})">Delete</button>
-                    </div>
-                    <div style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">
-                        ${msg.email} • ${msg.date}
-                    </div>
-                    <div style="font-weight: 600; margin-bottom: 0.5rem;">Subject: ${msg.subject}</div>
-                    <div>${msg.message}</div>
-                `;
-                messagesList.appendChild(messageDiv);
-            });
-        }
+            const formData = new FormData(this);
 
-        // Delete Message
-        async function deleteMessage(id) {
-            if (confirm('Delete this message?')) {
-                portfolioData.messages = portfolioData.messages.filter(msg => msg.id !== id);
-                
-                // Try to save to GitHub
-                const savedToGitHub = await saveMessagesToGitHub();
-                
-                if (!savedToGitHub) {
-                    // Fall back to localStorage
-                    saveData();
+            try {
+                const response = await fetch(`https://formspree.io/f/${CONFIG.formspreeID}`, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    showNotification('Message sent successfully! I will get back to you soon.', 'success');
+                    this.reset();
+                } else {
+                    showNotification('Oops! There was a problem sending your message.', 'error');
                 }
-                
-                renderMessages();
-                showNotification('Message deleted', 'success');
+            } catch (error) {
+                showNotification('Oops! There was a problem sending your message.', 'error');
             }
-        }
 
-        // Admin Panel
-        function toggleAdminPanel() {
-            document.getElementById('adminPanel').classList.toggle('open');
-        }
-
-        // Close admin panel on outside click
-        document.addEventListener('click', function(e) {
-            const panel = document.getElementById('adminPanel');
-            const toggle = document.querySelector('.admin-toggle');
-            
-            if (!panel.contains(e.target) && !toggle.contains(e.target)) {
-                panel.classList.remove('open');
-            }
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
         });
 
         // Notifications
@@ -1603,13 +1085,6 @@
                 notification.classList.remove('show');
             }, 4000);
         }
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                document.getElementById('adminPanel').classList.remove('open');
-            }
-        });
     </script>
 </body>
 </html>
